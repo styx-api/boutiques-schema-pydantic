@@ -3,7 +3,7 @@ revision = 1
 requires-python = ">=3.12"
 
 [[package]]
-name = "app-name"
+name = "boutiques-schema-pydantic"
 version = "0.1.0"
 source = { editable = "." }
 
