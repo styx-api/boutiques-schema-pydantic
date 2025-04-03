@@ -9,7 +9,7 @@ license = "MIT"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "pydantic>=2.11.2",
+  "pydantic>=2.11.2"
 ]
 
 [dependency-groups]
