@@ -1,11 +1,11 @@
 [project]
-name = "app-name"
+name = "boutiques-schema-pydantic"
 version = "0.1.0"
 description = "A beautiful description."
 authors = [
-  {name = "Reinder Vos de Wael", email = "reinder.vosdewael@childmind.org"}
+  {name = "CMI DAIR", email = "dair@childmind.org"}
 ]
-license = "LGPL-2.1"
+license = "MIT"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = []
