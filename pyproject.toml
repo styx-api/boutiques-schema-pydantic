@@ -8,7 +8,9 @@ authors = [
 license = "MIT"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "pydantic>=2.11.2",
+]
 
 [dependency-groups]
 dev = [
