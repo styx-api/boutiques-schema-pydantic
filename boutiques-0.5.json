@@ -24,6 +24,1706 @@
       "title": "Assertion",
       "type": "object"
     },
+    "CommandLineFlaggedFileInput": {
+      "description": "File with a command line flag before it.",
+      "properties": {
+        "command-line-flag": {
+          "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "title": "Command-Line-Flag",
+          "type": "string"
+        },
+        "command-line-flag-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between flags and their arguments. Defaults to a single space.",
+          "title": "Command-Line-Flag-Separator"
+        },
+        "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+          "minLength": 1,
+          "pattern": "^[0-9_a-zA-Z]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human-readable name. Example: 'Data file'.",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "requires-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+          "title": "Requires-Inputs"
+        },
+        "disables-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs that are disabled when this input is active.",
+          "title": "Disables-Inputs"
+        },
+        "value-key": {
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key",
+          "type": "string"
+        },
+        "value_requires": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+          "title": "Value Requires"
+        },
+        "value_enables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are enabled when the corresponding value choice is selected.",
+          "title": "Value Enables"
+        },
+        "value_disables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+          "title": "Value Disables"
+        },
+        "type": {
+          "const": "File",
+          "title": "Type",
+          "type": "string"
+        },
+        "uses-absolute-path": {
+          "default": false,
+          "description": "Specifies value must be given as an absolute path.",
+          "title": "Uses-Absolute-Path",
+          "type": "boolean"
+        },
+        "optional": {
+          "default": false,
+          "description": "True if optional",
+          "title": "Optional",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "command-line-flag",
+        "id",
+        "name",
+        "value-key",
+        "type"
+      ],
+      "title": "CommandLineFlaggedFileInput",
+      "type": "object"
+    },
+    "CommandLineFlaggedFileListInput": {
+      "description": "List of files with a command line flag before them.",
+      "properties": {
+        "command-line-flag": {
+          "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "title": "Command-Line-Flag",
+          "type": "string"
+        },
+        "command-line-flag-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between flags and their arguments. Defaults to a single space.",
+          "title": "Command-Line-Flag-Separator"
+        },
+        "list": {
+          "const": true,
+          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
+          "title": "List",
+          "type": "boolean"
+        },
+        "list-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between list items. Defaults to a single space.",
+          "title": "List-Separator"
+        },
+        "min-list-entries": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum number of entries in the list. May only be used with List type inputs.",
+          "title": "Min-List-Entries"
+        },
+        "max-list-entries": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum number of entries in the list. May only be used with List type inputs.",
+          "title": "Max-List-Entries"
+        },
+        "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+          "minLength": 1,
+          "pattern": "^[0-9_a-zA-Z]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human-readable name. Example: 'Data file'.",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "requires-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+          "title": "Requires-Inputs"
+        },
+        "disables-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs that are disabled when this input is active.",
+          "title": "Disables-Inputs"
+        },
+        "value-key": {
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key",
+          "type": "string"
+        },
+        "value_requires": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+          "title": "Value Requires"
+        },
+        "value_enables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are enabled when the corresponding value choice is selected.",
+          "title": "Value Enables"
+        },
+        "value_disables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+          "title": "Value Disables"
+        },
+        "type": {
+          "const": "File",
+          "title": "Type",
+          "type": "string"
+        },
+        "uses-absolute-path": {
+          "default": false,
+          "description": "Specifies value must be given as an absolute path.",
+          "title": "Uses-Absolute-Path",
+          "type": "boolean"
+        },
+        "optional": {
+          "default": false,
+          "description": "True if optional",
+          "title": "Optional",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "command-line-flag",
+        "list",
+        "id",
+        "name",
+        "value-key",
+        "type"
+      ],
+      "title": "CommandLineFlaggedFileListInput",
+      "type": "object"
+    },
+    "CommandLineFlaggedFloatInput": {
+      "description": "Float with a command line flag before it.",
+      "properties": {
+        "command-line-flag": {
+          "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "title": "Command-Line-Flag",
+          "type": "string"
+        },
+        "command-line-flag-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between flags and their arguments. Defaults to a single space.",
+          "title": "Command-Line-Flag-Separator"
+        },
+        "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+          "minLength": 1,
+          "pattern": "^[0-9_a-zA-Z]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human-readable name. Example: 'Data file'.",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "requires-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+          "title": "Requires-Inputs"
+        },
+        "disables-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs that are disabled when this input is active.",
+          "title": "Disables-Inputs"
+        },
+        "value-key": {
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key",
+          "type": "string"
+        },
+        "value_requires": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+          "title": "Value Requires"
+        },
+        "value_enables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are enabled when the corresponding value choice is selected.",
+          "title": "Value Enables"
+        },
+        "value_disables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+          "title": "Value Disables"
+        },
+        "type": {
+          "const": "Number",
+          "title": "Type",
+          "type": "string"
+        },
+        "integer": {
+          "anyOf": [
+            {
+              "const": false,
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": false,
+          "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
+          "title": "Integer"
+        },
+        "default-value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Default value of the input. The default value is set when no value is specified, even when the input is optional. If the desired behavior is to omit the input from the command line when no value is specified, then no default value should be used. In this case, the tool might still use a default value internally, but this will remain undocumented in the Boutiques interface.",
+          "title": "Default-Value"
+        },
+        "optional": {
+          "default": false,
+          "description": "True if optional",
+          "title": "Optional",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "command-line-flag",
+        "id",
+        "name",
+        "value-key",
+        "type"
+      ],
+      "title": "CommandLineFlaggedFloatInput",
+      "type": "object"
+    },
+    "CommandLineFlaggedFloatListInput": {
+      "description": "List of floats with a command line flag before them.",
+      "properties": {
+        "command-line-flag": {
+          "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "title": "Command-Line-Flag",
+          "type": "string"
+        },
+        "command-line-flag-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between flags and their arguments. Defaults to a single space.",
+          "title": "Command-Line-Flag-Separator"
+        },
+        "list": {
+          "const": true,
+          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
+          "title": "List",
+          "type": "boolean"
+        },
+        "list-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between list items. Defaults to a single space.",
+          "title": "List-Separator"
+        },
+        "min-list-entries": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum number of entries in the list. May only be used with List type inputs.",
+          "title": "Min-List-Entries"
+        },
+        "max-list-entries": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum number of entries in the list. May only be used with List type inputs.",
+          "title": "Max-List-Entries"
+        },
+        "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+          "minLength": 1,
+          "pattern": "^[0-9_a-zA-Z]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human-readable name. Example: 'Data file'.",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "requires-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+          "title": "Requires-Inputs"
+        },
+        "disables-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs that are disabled when this input is active.",
+          "title": "Disables-Inputs"
+        },
+        "value-key": {
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key",
+          "type": "string"
+        },
+        "value_requires": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+          "title": "Value Requires"
+        },
+        "value_enables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are enabled when the corresponding value choice is selected.",
+          "title": "Value Enables"
+        },
+        "value_disables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+          "title": "Value Disables"
+        },
+        "type": {
+          "const": "Number",
+          "title": "Type",
+          "type": "string"
+        },
+        "integer": {
+          "const": true,
+          "default": true,
+          "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
+          "title": "Integer",
+          "type": "boolean"
+        },
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Minimum"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Maximum"
+        },
+        "exclusive-minimum": {
+          "default": false,
+          "description": "Specify whether the minimum is exclusive or not. May only be used with Number type inputs.",
+          "title": "Exclusive-Minimum",
+          "type": "boolean"
+        },
+        "exclusive-maximum": {
+          "default": false,
+          "description": "Specify whether the maximum is exclusive or not. May only be used with Number type inputs.",
+          "title": "Exclusive-Maximum",
+          "type": "boolean"
+        },
+        "value-choices": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Permitted choices for input value. May not be used with the Flag type.",
+          "title": "Value-Choices"
+        },
+        "default-value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Default value of the input. The default value is set when no value is specified, even when the input is optional. If the desired behavior is to omit the input from the command line when no value is specified, then no default value should be used. In this case, the tool might still use a default value internally, but this will remain undocumented in the Boutiques interface.",
+          "title": "Default-Value"
+        },
+        "optional": {
+          "default": false,
+          "description": "True if optional",
+          "title": "Optional",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "command-line-flag",
+        "list",
+        "id",
+        "name",
+        "value-key",
+        "type"
+      ],
+      "title": "CommandLineFlaggedFloatListInput",
+      "type": "object"
+    },
+    "CommandLineFlaggedIntegerInput": {
+      "description": "Integer with a command line flag before it.",
+      "properties": {
+        "command-line-flag": {
+          "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "title": "Command-Line-Flag",
+          "type": "string"
+        },
+        "command-line-flag-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between flags and their arguments. Defaults to a single space.",
+          "title": "Command-Line-Flag-Separator"
+        },
+        "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+          "minLength": 1,
+          "pattern": "^[0-9_a-zA-Z]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human-readable name. Example: 'Data file'.",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "requires-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+          "title": "Requires-Inputs"
+        },
+        "disables-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs that are disabled when this input is active.",
+          "title": "Disables-Inputs"
+        },
+        "value-key": {
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key",
+          "type": "string"
+        },
+        "value_requires": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+          "title": "Value Requires"
+        },
+        "value_enables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are enabled when the corresponding value choice is selected.",
+          "title": "Value Enables"
+        },
+        "value_disables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+          "title": "Value Disables"
+        },
+        "type": {
+          "const": "Number",
+          "title": "Type",
+          "type": "string"
+        },
+        "integer": {
+          "const": true,
+          "default": true,
+          "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
+          "title": "Integer",
+          "type": "boolean"
+        },
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Minimum"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Maximum"
+        },
+        "exclusive-minimum": {
+          "default": false,
+          "description": "Specify whether the minimum is exclusive or not. May only be used with Number type inputs.",
+          "title": "Exclusive-Minimum",
+          "type": "boolean"
+        },
+        "exclusive-maximum": {
+          "default": false,
+          "description": "Specify whether the maximum is exclusive or not. May only be used with Number type inputs.",
+          "title": "Exclusive-Maximum",
+          "type": "boolean"
+        },
+        "value-choices": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Permitted choices for input value. May not be used with the Flag type.",
+          "title": "Value-Choices"
+        },
+        "default-value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Default value of the input. The default value is set when no value is specified, even when the input is optional. If the desired behavior is to omit the input from the command line when no value is specified, then no default value should be used. In this case, the tool might still use a default value internally, but this will remain undocumented in the Boutiques interface.",
+          "title": "Default-Value"
+        },
+        "optional": {
+          "default": false,
+          "description": "True if optional",
+          "title": "Optional",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "command-line-flag",
+        "id",
+        "name",
+        "value-key",
+        "type"
+      ],
+      "title": "CommandLineFlaggedIntegerInput",
+      "type": "object"
+    },
+    "CommandLineFlaggedIntegerListInput": {
+      "description": "List of integers with a command line flag before them.",
+      "properties": {
+        "command-line-flag": {
+          "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "title": "Command-Line-Flag",
+          "type": "string"
+        },
+        "command-line-flag-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between flags and their arguments. Defaults to a single space.",
+          "title": "Command-Line-Flag-Separator"
+        },
+        "list": {
+          "const": true,
+          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
+          "title": "List",
+          "type": "boolean"
+        },
+        "list-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between list items. Defaults to a single space.",
+          "title": "List-Separator"
+        },
+        "min-list-entries": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum number of entries in the list. May only be used with List type inputs.",
+          "title": "Min-List-Entries"
+        },
+        "max-list-entries": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum number of entries in the list. May only be used with List type inputs.",
+          "title": "Max-List-Entries"
+        },
+        "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+          "minLength": 1,
+          "pattern": "^[0-9_a-zA-Z]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human-readable name. Example: 'Data file'.",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "requires-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+          "title": "Requires-Inputs"
+        },
+        "disables-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs that are disabled when this input is active.",
+          "title": "Disables-Inputs"
+        },
+        "value-key": {
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key",
+          "type": "string"
+        },
+        "value_requires": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+          "title": "Value Requires"
+        },
+        "value_enables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are enabled when the corresponding value choice is selected.",
+          "title": "Value Enables"
+        },
+        "value_disables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+          "title": "Value Disables"
+        },
+        "type": {
+          "const": "Number",
+          "title": "Type",
+          "type": "string"
+        },
+        "integer": {
+          "const": true,
+          "default": true,
+          "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
+          "title": "Integer",
+          "type": "boolean"
+        },
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Minimum"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Maximum"
+        },
+        "exclusive-minimum": {
+          "default": false,
+          "description": "Specify whether the minimum is exclusive or not. May only be used with Number type inputs.",
+          "title": "Exclusive-Minimum",
+          "type": "boolean"
+        },
+        "exclusive-maximum": {
+          "default": false,
+          "description": "Specify whether the maximum is exclusive or not. May only be used with Number type inputs.",
+          "title": "Exclusive-Maximum",
+          "type": "boolean"
+        },
+        "value-choices": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Permitted choices for input value. May not be used with the Flag type.",
+          "title": "Value-Choices"
+        },
+        "default-value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Default value of the input. The default value is set when no value is specified, even when the input is optional. If the desired behavior is to omit the input from the command line when no value is specified, then no default value should be used. In this case, the tool might still use a default value internally, but this will remain undocumented in the Boutiques interface.",
+          "title": "Default-Value"
+        },
+        "optional": {
+          "default": false,
+          "description": "True if optional",
+          "title": "Optional",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "command-line-flag",
+        "list",
+        "id",
+        "name",
+        "value-key",
+        "type"
+      ],
+      "title": "CommandLineFlaggedIntegerListInput",
+      "type": "object"
+    },
+    "CommandLineFlaggedStringInput": {
+      "description": "String with a command line flag before it.",
+      "properties": {
+        "command-line-flag": {
+          "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "title": "Command-Line-Flag",
+          "type": "string"
+        },
+        "command-line-flag-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between flags and their arguments. Defaults to a single space.",
+          "title": "Command-Line-Flag-Separator"
+        },
+        "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+          "minLength": 1,
+          "pattern": "^[0-9_a-zA-Z]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human-readable name. Example: 'Data file'.",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "requires-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+          "title": "Requires-Inputs"
+        },
+        "disables-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs that are disabled when this input is active.",
+          "title": "Disables-Inputs"
+        },
+        "value-key": {
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key",
+          "type": "string"
+        },
+        "value_requires": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+          "title": "Value Requires"
+        },
+        "value_enables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are enabled when the corresponding value choice is selected.",
+          "title": "Value Enables"
+        },
+        "value_disables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+          "title": "Value Disables"
+        },
+        "type": {
+          "const": "String",
+          "title": "Type",
+          "type": "string"
+        },
+        "value-choices": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Permitted choices for input value. May not be used with the Flag type.",
+          "title": "Value-Choices"
+        },
+        "default-value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Default value of the input. The default value is set when no value is specified, even when the input is optional. If the desired behavior is to omit the input from the command line when no value is specified, then no default value should be used. In this case, the tool might still use a default value internally, but this will remain undocumented in the Boutiques interface.",
+          "title": "Default-Value"
+        },
+        "optional": {
+          "default": false,
+          "description": "True if optional",
+          "title": "Optional",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "command-line-flag",
+        "id",
+        "name",
+        "value-key",
+        "type"
+      ],
+      "title": "CommandLineFlaggedStringInput",
+      "type": "object"
+    },
+    "CommandLineFlaggedStringListInput": {
+      "description": "List of strings with a command line flag before them.",
+      "properties": {
+        "command-line-flag": {
+          "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "title": "Command-Line-Flag",
+          "type": "string"
+        },
+        "command-line-flag-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between flags and their arguments. Defaults to a single space.",
+          "title": "Command-Line-Flag-Separator"
+        },
+        "list": {
+          "const": true,
+          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
+          "title": "List",
+          "type": "boolean"
+        },
+        "list-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between list items. Defaults to a single space.",
+          "title": "List-Separator"
+        },
+        "min-list-entries": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum number of entries in the list. May only be used with List type inputs.",
+          "title": "Min-List-Entries"
+        },
+        "max-list-entries": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum number of entries in the list. May only be used with List type inputs.",
+          "title": "Max-List-Entries"
+        },
+        "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+          "minLength": 1,
+          "pattern": "^[0-9_a-zA-Z]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human-readable name. Example: 'Data file'.",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "requires-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+          "title": "Requires-Inputs"
+        },
+        "disables-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs that are disabled when this input is active.",
+          "title": "Disables-Inputs"
+        },
+        "value-key": {
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key",
+          "type": "string"
+        },
+        "value_requires": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+          "title": "Value Requires"
+        },
+        "value_enables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are enabled when the corresponding value choice is selected.",
+          "title": "Value Enables"
+        },
+        "value_disables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+          "title": "Value Disables"
+        },
+        "type": {
+          "const": "Number",
+          "title": "Type",
+          "type": "string"
+        },
+        "integer": {
+          "const": true,
+          "default": true,
+          "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
+          "title": "Integer",
+          "type": "boolean"
+        },
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Minimum"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Maximum"
+        },
+        "exclusive-minimum": {
+          "default": false,
+          "description": "Specify whether the minimum is exclusive or not. May only be used with Number type inputs.",
+          "title": "Exclusive-Minimum",
+          "type": "boolean"
+        },
+        "exclusive-maximum": {
+          "default": false,
+          "description": "Specify whether the maximum is exclusive or not. May only be used with Number type inputs.",
+          "title": "Exclusive-Maximum",
+          "type": "boolean"
+        },
+        "value-choices": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Permitted choices for input value. May not be used with the Flag type.",
+          "title": "Value-Choices"
+        },
+        "default-value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Default value of the input. The default value is set when no value is specified, even when the input is optional. If the desired behavior is to omit the input from the command line when no value is specified, then no default value should be used. In this case, the tool might still use a default value internally, but this will remain undocumented in the Boutiques interface.",
+          "title": "Default-Value"
+        },
+        "optional": {
+          "default": false,
+          "description": "True if optional",
+          "title": "Optional",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "command-line-flag",
+        "list",
+        "id",
+        "name",
+        "value-key",
+        "type"
+      ],
+      "title": "CommandLineFlaggedStringListInput",
+      "type": "object"
+    },
+    "ConditionalPathTemplateOutput": {
+      "description": "Output using a conditional path template.",
+      "properties": {
+        "conditional-path-template": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/PathProperty"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "List of objects containing boolean statement (Limited python syntax: ==, !=, <, >, <=, >=, and, or) and output file paths relative to the execution directory, assign path of first true boolean statement. May contain input value keys, \"default\" object required if \"optional\" set to True . Example list: \"[{\"[PARAM1] > 8\": \"outputs/[INPUT1].txt\"}, {\"default\": \"outputs/default.txt\"}]\".",
+          "title": "Conditional-Path-Template"
+        }
+      },
+      "title": "ConditionalPathTemplateOutput",
+      "type": "object"
+    },
     "DockerContainerImage": {
       "description": "Model for container image configuration.",
       "properties": {
@@ -170,6 +1870,834 @@
       "title": "ErrorCode",
       "type": "object"
     },
+    "FileInput": {
+      "description": "File input.",
+      "properties": {
+        "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+          "minLength": 1,
+          "pattern": "^[0-9_a-zA-Z]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human-readable name. Example: 'Data file'.",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "requires-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+          "title": "Requires-Inputs"
+        },
+        "disables-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs that are disabled when this input is active.",
+          "title": "Disables-Inputs"
+        },
+        "value-key": {
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key",
+          "type": "string"
+        },
+        "value_requires": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+          "title": "Value Requires"
+        },
+        "value_enables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are enabled when the corresponding value choice is selected.",
+          "title": "Value Enables"
+        },
+        "value_disables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+          "title": "Value Disables"
+        },
+        "type": {
+          "const": "File",
+          "title": "Type",
+          "type": "string"
+        },
+        "uses-absolute-path": {
+          "default": false,
+          "description": "Specifies value must be given as an absolute path.",
+          "title": "Uses-Absolute-Path",
+          "type": "boolean"
+        },
+        "optional": {
+          "default": false,
+          "description": "True if optional",
+          "title": "Optional",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "value-key",
+        "type"
+      ],
+      "title": "FileInput",
+      "type": "object"
+    },
+    "FileListInput": {
+      "description": "List of files.",
+      "properties": {
+        "list": {
+          "const": true,
+          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
+          "title": "List",
+          "type": "boolean"
+        },
+        "list-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between list items. Defaults to a single space.",
+          "title": "List-Separator"
+        },
+        "min-list-entries": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum number of entries in the list. May only be used with List type inputs.",
+          "title": "Min-List-Entries"
+        },
+        "max-list-entries": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum number of entries in the list. May only be used with List type inputs.",
+          "title": "Max-List-Entries"
+        },
+        "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+          "minLength": 1,
+          "pattern": "^[0-9_a-zA-Z]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human-readable name. Example: 'Data file'.",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "requires-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+          "title": "Requires-Inputs"
+        },
+        "disables-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs that are disabled when this input is active.",
+          "title": "Disables-Inputs"
+        },
+        "value-key": {
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key",
+          "type": "string"
+        },
+        "value_requires": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+          "title": "Value Requires"
+        },
+        "value_enables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are enabled when the corresponding value choice is selected.",
+          "title": "Value Enables"
+        },
+        "value_disables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+          "title": "Value Disables"
+        },
+        "type": {
+          "const": "File",
+          "title": "Type",
+          "type": "string"
+        },
+        "uses-absolute-path": {
+          "default": false,
+          "description": "Specifies value must be given as an absolute path.",
+          "title": "Uses-Absolute-Path",
+          "type": "boolean"
+        },
+        "optional": {
+          "default": false,
+          "description": "True if optional",
+          "title": "Optional",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "list",
+        "id",
+        "name",
+        "value-key",
+        "type"
+      ],
+      "title": "FileListInput",
+      "type": "object"
+    },
+    "FlagInput": {
+      "description": "Flag input.",
+      "properties": {
+        "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+          "minLength": 1,
+          "pattern": "^[0-9_a-zA-Z]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human-readable name. Example: 'Data file'.",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "requires-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+          "title": "Requires-Inputs"
+        },
+        "disables-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs that are disabled when this input is active.",
+          "title": "Disables-Inputs"
+        },
+        "value-key": {
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key",
+          "type": "string"
+        },
+        "value_requires": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+          "title": "Value Requires"
+        },
+        "value_enables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are enabled when the corresponding value choice is selected.",
+          "title": "Value Enables"
+        },
+        "value_disables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+          "title": "Value Disables"
+        },
+        "type": {
+          "const": "Flag",
+          "title": "Type",
+          "type": "string"
+        },
+        "default-value": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Default value of the input. The default value is set when no value is specified, even when the input is optional. If the desired behavior is to omit the input from the command line when no value is specified, then no default value should be used. In this case, the tool might still use a default value internally, but this will remain undocumented in the Boutiques interface.",
+          "title": "Default-Value"
+        },
+        "command-line-flag": {
+          "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "title": "Command-Line-Flag",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "value-key",
+        "type",
+        "command-line-flag"
+      ],
+      "title": "FlagInput",
+      "type": "object"
+    },
+    "FloatInput": {
+      "description": "Float input.",
+      "properties": {
+        "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+          "minLength": 1,
+          "pattern": "^[0-9_a-zA-Z]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human-readable name. Example: 'Data file'.",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "requires-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+          "title": "Requires-Inputs"
+        },
+        "disables-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs that are disabled when this input is active.",
+          "title": "Disables-Inputs"
+        },
+        "value-key": {
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key",
+          "type": "string"
+        },
+        "value_requires": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+          "title": "Value Requires"
+        },
+        "value_enables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are enabled when the corresponding value choice is selected.",
+          "title": "Value Enables"
+        },
+        "value_disables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+          "title": "Value Disables"
+        },
+        "type": {
+          "const": "Number",
+          "title": "Type",
+          "type": "string"
+        },
+        "integer": {
+          "anyOf": [
+            {
+              "const": false,
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": false,
+          "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
+          "title": "Integer"
+        },
+        "default-value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Default value of the input. The default value is set when no value is specified, even when the input is optional. If the desired behavior is to omit the input from the command line when no value is specified, then no default value should be used. In this case, the tool might still use a default value internally, but this will remain undocumented in the Boutiques interface.",
+          "title": "Default-Value"
+        },
+        "optional": {
+          "default": false,
+          "description": "True if optional",
+          "title": "Optional",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "value-key",
+        "type"
+      ],
+      "title": "FloatInput",
+      "type": "object"
+    },
+    "FloatListInput": {
+      "description": "List of floats.",
+      "properties": {
+        "list": {
+          "const": true,
+          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
+          "title": "List",
+          "type": "boolean"
+        },
+        "list-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between list items. Defaults to a single space.",
+          "title": "List-Separator"
+        },
+        "min-list-entries": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum number of entries in the list. May only be used with List type inputs.",
+          "title": "Min-List-Entries"
+        },
+        "max-list-entries": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum number of entries in the list. May only be used with List type inputs.",
+          "title": "Max-List-Entries"
+        },
+        "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+          "minLength": 1,
+          "pattern": "^[0-9_a-zA-Z]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human-readable name. Example: 'Data file'.",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "requires-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+          "title": "Requires-Inputs"
+        },
+        "disables-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs that are disabled when this input is active.",
+          "title": "Disables-Inputs"
+        },
+        "value-key": {
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key",
+          "type": "string"
+        },
+        "value_requires": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+          "title": "Value Requires"
+        },
+        "value_enables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are enabled when the corresponding value choice is selected.",
+          "title": "Value Enables"
+        },
+        "value_disables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+          "title": "Value Disables"
+        },
+        "type": {
+          "const": "Number",
+          "title": "Type",
+          "type": "string"
+        },
+        "integer": {
+          "const": true,
+          "default": true,
+          "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
+          "title": "Integer",
+          "type": "boolean"
+        },
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Minimum"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Maximum"
+        },
+        "exclusive-minimum": {
+          "default": false,
+          "description": "Specify whether the minimum is exclusive or not. May only be used with Number type inputs.",
+          "title": "Exclusive-Minimum",
+          "type": "boolean"
+        },
+        "exclusive-maximum": {
+          "default": false,
+          "description": "Specify whether the maximum is exclusive or not. May only be used with Number type inputs.",
+          "title": "Exclusive-Maximum",
+          "type": "boolean"
+        },
+        "value-choices": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Permitted choices for input value. May not be used with the Flag type.",
+          "title": "Value-Choices"
+        },
+        "default-value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Default value of the input. The default value is set when no value is specified, even when the input is optional. If the desired behavior is to omit the input from the command line when no value is specified, then no default value should be used. In this case, the tool might still use a default value internally, but this will remain undocumented in the Boutiques interface.",
+          "title": "Default-Value"
+        },
+        "optional": {
+          "default": false,
+          "description": "True if optional",
+          "title": "Optional",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "list",
+        "id",
+        "name",
+        "value-key",
+        "type"
+      ],
+      "title": "FloatListInput",
+      "type": "object"
+    },
     "Group": {
       "description": "Model for Boutiques descriptor groups property.",
       "properties": {
@@ -235,8 +2763,8 @@
       "title": "Group",
       "type": "object"
     },
-    "Input": {
-      "description": "Model representing a Boutiques input.",
+    "IntegerInput": {
+      "description": "Integer input.",
       "properties": {
         "id": {
           "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
@@ -262,86 +2790,6 @@
           ],
           "default": null,
           "title": "Description"
-        },
-        "list": {
-          "default": false,
-          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
-          "title": "List",
-          "type": "boolean"
-        },
-        "optional": {
-          "default": false,
-          "description": "True if optional",
-          "title": "Optional",
-          "type": "boolean"
-        },
-        "command-line-flag": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
-          "title": "Command-Line-Flag"
-        },
-        "command-line-flag-separator": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Separator used between flags and their arguments. Defaults to a single space.",
-          "title": "Command-Line-Flag-Separator"
-        },
-        "uses-absolute-path": {
-          "default": false,
-          "description": "Specifies value must be given as an absolute path.",
-          "title": "Uses-Absolute-Path",
-          "type": "boolean"
-        },
-        "type": {
-          "anyOf": [
-            {
-              "enum": [
-                "String",
-                "File",
-                "Flag",
-                "Number"
-              ],
-              "type": "string"
-            },
-            {
-              "$ref": "#/$defs/SubInput"
-            },
-            {
-              "items": {
-                "$ref": "#/$defs/SubInput"
-              },
-              "type": "array"
-            }
-          ],
-          "title": "Type"
-        },
-        "list-separator": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Separator used between list items. Defaults to a single space.",
-          "title": "List-Separator"
         },
         "requires-inputs": {
           "anyOf": [
@@ -374,29 +2822,6 @@
           "default": null,
           "description": "Ids of the inputs that are disabled when this input is active.",
           "title": "Disables-Inputs"
-        },
-        "value-choices": {
-          "anyOf": [
-            {
-              "items": {
-                "anyOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "integer"
-                  }
-                ]
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Permitted choices for input value. May not be used with the Flag type.",
-          "title": "Value-Choices"
         },
         "value-key": {
           "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
@@ -439,8 +2864,14 @@
           "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
           "title": "Value Disables"
         },
+        "type": {
+          "const": "Number",
+          "title": "Type",
+          "type": "string"
+        },
         "integer": {
-          "default": false,
+          "const": true,
+          "default": true,
           "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
           "title": "Integer",
           "type": "boolean"
@@ -483,6 +2914,73 @@
           "title": "Exclusive-Maximum",
           "type": "boolean"
         },
+        "value-choices": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Permitted choices for input value. May not be used with the Flag type.",
+          "title": "Value-Choices"
+        },
+        "default-value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Default value of the input. The default value is set when no value is specified, even when the input is optional. If the desired behavior is to omit the input from the command line when no value is specified, then no default value should be used. In this case, the tool might still use a default value internally, but this will remain undocumented in the Boutiques interface.",
+          "title": "Default-Value"
+        },
+        "optional": {
+          "default": false,
+          "description": "True if optional",
+          "title": "Optional",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "value-key",
+        "type"
+      ],
+      "title": "IntegerInput",
+      "type": "object"
+    },
+    "IntegerListInput": {
+      "description": "List of integers.",
+      "properties": {
+        "list": {
+          "const": true,
+          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
+          "title": "List",
+          "type": "boolean"
+        },
+        "list-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between list items. Defaults to a single space.",
+          "title": "List-Separator"
+        },
         "min-list-entries": {
           "anyOf": [
             {
@@ -509,31 +3007,6 @@
           "description": "Specify the maximum number of entries in the list. May only be used with List type inputs.",
           "title": "Max-List-Entries"
         },
-        "resolve-parent": {
-          "default": false,
-          "description": "Specifies that the full parent directory of this file needs to be visible to the tool. Only specifiable for File type inputs.",
-          "title": "Resolve-Parent",
-          "type": "boolean"
-        },
-        "mutable": {
-          "default": false,
-          "description": "Specifies that the tool may modify the input file. Only specifiable for File type inputs.",
-          "title": "Mutable",
-          "type": "boolean"
-        }
-      },
-      "required": [
-        "id",
-        "name",
-        "type",
-        "value-key"
-      ],
-      "title": "Input",
-      "type": "object"
-    },
-    "Output": {
-      "description": "Model representing an output file.",
-      "properties": {
         "id": {
           "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
           "minLength": 1,
@@ -559,133 +3032,173 @@
           "default": null,
           "title": "Description"
         },
-        "list": {
-          "default": false,
-          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
-          "title": "List",
+        "requires-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+          "title": "Requires-Inputs"
+        },
+        "disables-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs that are disabled when this input is active.",
+          "title": "Disables-Inputs"
+        },
+        "value-key": {
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key",
+          "type": "string"
+        },
+        "value_requires": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+          "title": "Value Requires"
+        },
+        "value_enables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are enabled when the corresponding value choice is selected.",
+          "title": "Value Enables"
+        },
+        "value_disables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+          "title": "Value Disables"
+        },
+        "type": {
+          "const": "Number",
+          "title": "Type",
+          "type": "string"
+        },
+        "integer": {
+          "const": true,
+          "default": true,
+          "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
+          "title": "Integer",
           "type": "boolean"
+        },
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Minimum"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Maximum"
+        },
+        "exclusive-minimum": {
+          "default": false,
+          "description": "Specify whether the minimum is exclusive or not. May only be used with Number type inputs.",
+          "title": "Exclusive-Minimum",
+          "type": "boolean"
+        },
+        "exclusive-maximum": {
+          "default": false,
+          "description": "Specify whether the maximum is exclusive or not. May only be used with Number type inputs.",
+          "title": "Exclusive-Maximum",
+          "type": "boolean"
+        },
+        "value-choices": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Permitted choices for input value. May not be used with the Flag type.",
+          "title": "Value-Choices"
+        },
+        "default-value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Default value of the input. The default value is set when no value is specified, even when the input is optional. If the desired behavior is to omit the input from the command line when no value is specified, then no default value should be used. In this case, the tool might still use a default value internally, but this will remain undocumented in the Boutiques interface.",
+          "title": "Default-Value"
         },
         "optional": {
           "default": false,
           "description": "True if optional",
           "title": "Optional",
           "type": "boolean"
-        },
-        "command-line-flag": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
-          "title": "Command-Line-Flag"
-        },
-        "command-line-flag-separator": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Separator used between flags and their arguments. Defaults to a single space.",
-          "title": "Command-Line-Flag-Separator"
-        },
-        "uses-absolute-path": {
-          "default": false,
-          "description": "Specifies value must be given as an absolute path.",
-          "title": "Uses-Absolute-Path",
-          "type": "boolean"
-        },
-        "path-template": {
-          "anyOf": [
-            {
-              "minLength": 1,
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Describes the output file path relatively to the execution directory. May contain input value keys and wildcards. Example: \"results/[INPUT1]_brain*.mnc\".",
-          "title": "Path-Template"
-        },
-        "conditional-path-template": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/PathProperty"
-              },
-              "minItems": 1,
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of objects containing boolean statement (Limited python syntax: ==, !=, <, >, <=, >=, and, or) and output file paths relative to the execution directory, assign path of first true boolean statement. May contain input value keys, \"default\" object required if \"optional\" set to True . Example list: \"[{\"[PARAM1] > 8\": \"outputs/[INPUT1].txt\"}, {\"default\": \"outputs/default.txt\"}]\".",
-          "title": "Conditional-Path-Template"
-        },
-        "path-template-stripped-extensions": {
-          "anyOf": [
-            {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "List of file extensions that will be stripped from the input values before being substituted in the path template. Example: [\".nii\",\".nii.gz\"].",
-          "title": "Path-Template-Stripped-Extensions"
-        },
-        "file-template": {
-          "anyOf": [
-            {
-              "items": {
-                "minLength": 1,
-                "type": "string"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "An array of strings that may contain value keys. Each item will be a line in the configuration file.",
-          "title": "File-Template"
-        },
-        "value-key": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
-          "title": "Value-Key"
         }
       },
       "required": [
+        "list",
         "id",
-        "name"
+        "name",
+        "value-key",
+        "type"
       ],
-      "title": "Output",
+      "title": "IntegerListInput",
       "type": "object"
     },
     "OutputFile": {
@@ -723,13 +3236,36 @@
       "description": "Model representing an path property.",
       "properties": {
         "propertyNames": {
-          "default": null,
           "pattern": "^[A-Za-z0-9_><=!)( ]*$",
           "title": "Propertynames",
           "type": "string"
         }
       },
+      "required": [
+        "propertyNames"
+      ],
       "title": "PathProperty",
+      "type": "object"
+    },
+    "PathTemplateOutput": {
+      "description": "Output using a (basic) path template.",
+      "properties": {
+        "path-template": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Describes the output file path relatively to the execution directory. May contain input value keys and wildcards. Example: \"results/[INPUT1]_brain*.mnc\".",
+          "title": "Path-Template"
+        }
+      },
+      "title": "PathTemplateOutput",
       "type": "object"
     },
     "RootfsContainerImage": {
@@ -820,15 +3356,19 @@
       "title": "RootfsContainerImage",
       "type": "object"
     },
-    "SubInput": {
-      "description": "Model for complex input type with sub-command details.",
+    "StringInput": {
+      "description": "String input.",
       "properties": {
         "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+          "minLength": 1,
           "pattern": "^[0-9_a-zA-Z]+$",
           "title": "Id",
           "type": "string"
         },
         "name": {
+          "description": "A human-readable name. Example: 'Data file'.",
+          "minLength": 1,
           "title": "Name",
           "type": "string"
         },
@@ -844,7 +3384,101 @@
           "default": null,
           "title": "Description"
         },
-        "command-line": {
+        "requires-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+          "title": "Requires-Inputs"
+        },
+        "disables-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs that are disabled when this input is active.",
+          "title": "Disables-Inputs"
+        },
+        "value-key": {
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key",
+          "type": "string"
+        },
+        "value_requires": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+          "title": "Value Requires"
+        },
+        "value_enables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are enabled when the corresponding value choice is selected.",
+          "title": "Value Enables"
+        },
+        "value_disables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+          "title": "Value Disables"
+        },
+        "type": {
+          "const": "String",
+          "title": "Type",
+          "type": "string"
+        },
+        "value-choices": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Permitted choices for input value. May not be used with the Flag type.",
+          "title": "Value-Choices"
+        },
+        "default-value": {
           "anyOf": [
             {
               "type": "string"
@@ -854,61 +3488,265 @@
             }
           ],
           "default": null,
-          "title": "Command-Line"
+          "description": "Default value of the input. The default value is set when no value is specified, even when the input is optional. If the desired behavior is to omit the input from the command line when no value is specified, then no default value should be used. In this case, the tool might still use a default value internally, but this will remain undocumented in the Boutiques interface.",
+          "title": "Default-Value"
         },
-        "inputs": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/Input"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "An array of input objects.",
-          "title": "Inputs"
-        },
-        "output-files": {
-          "anyOf": [
-            {
-              "items": {
-                "additionalProperties": true,
-                "type": "object"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Output-Files"
-        },
-        "groups": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/Group"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Groups"
+        "optional": {
+          "default": false,
+          "description": "True if optional",
+          "title": "Optional",
+          "type": "boolean"
         }
       },
       "required": [
         "id",
-        "name"
+        "name",
+        "value-key",
+        "type"
       ],
-      "title": "SubInput",
+      "title": "StringInput",
+      "type": "object"
+    },
+    "StringListInput": {
+      "description": "List of strings.",
+      "properties": {
+        "list": {
+          "const": true,
+          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
+          "title": "List",
+          "type": "boolean"
+        },
+        "list-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between list items. Defaults to a single space.",
+          "title": "List-Separator"
+        },
+        "min-list-entries": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum number of entries in the list. May only be used with List type inputs.",
+          "title": "Min-List-Entries"
+        },
+        "max-list-entries": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum number of entries in the list. May only be used with List type inputs.",
+          "title": "Max-List-Entries"
+        },
+        "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+          "minLength": 1,
+          "pattern": "^[0-9_a-zA-Z]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human-readable name. Example: 'Data file'.",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "requires-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+          "title": "Requires-Inputs"
+        },
+        "disables-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs that are disabled when this input is active.",
+          "title": "Disables-Inputs"
+        },
+        "value-key": {
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key",
+          "type": "string"
+        },
+        "value_requires": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+          "title": "Value Requires"
+        },
+        "value_enables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are enabled when the corresponding value choice is selected.",
+          "title": "Value Enables"
+        },
+        "value_disables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+          "title": "Value Disables"
+        },
+        "type": {
+          "const": "Number",
+          "title": "Type",
+          "type": "string"
+        },
+        "integer": {
+          "const": true,
+          "default": true,
+          "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
+          "title": "Integer",
+          "type": "boolean"
+        },
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Minimum"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Maximum"
+        },
+        "exclusive-minimum": {
+          "default": false,
+          "description": "Specify whether the minimum is exclusive or not. May only be used with Number type inputs.",
+          "title": "Exclusive-Minimum",
+          "type": "boolean"
+        },
+        "exclusive-maximum": {
+          "default": false,
+          "description": "Specify whether the maximum is exclusive or not. May only be used with Number type inputs.",
+          "title": "Exclusive-Maximum",
+          "type": "boolean"
+        },
+        "value-choices": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Permitted choices for input value. May not be used with the Flag type.",
+          "title": "Value-Choices"
+        },
+        "default-value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Default value of the input. The default value is set when no value is specified, even when the input is optional. If the desired behavior is to omit the input from the command line when no value is specified, then no default value should be used. In this case, the tool might still use a default value internally, but this will remain undocumented in the Boutiques interface.",
+          "title": "Default-Value"
+        },
+        "optional": {
+          "default": false,
+          "description": "True if optional",
+          "title": "Optional",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "list",
+        "id",
+        "name",
+        "value-key",
+        "type"
+      ],
+      "title": "StringListInput",
       "type": "object"
     },
     "SuggestedResources": {
@@ -1051,7 +3889,59 @@
     "inputs": {
       "description": "An array of input objects",
       "items": {
-        "$ref": "#/$defs/Input"
+        "anyOf": [
+          {
+            "$ref": "#/$defs/FlagInput"
+          },
+          {
+            "$ref": "#/$defs/StringInput"
+          },
+          {
+            "$ref": "#/$defs/FileInput"
+          },
+          {
+            "$ref": "#/$defs/IntegerInput"
+          },
+          {
+            "$ref": "#/$defs/FloatInput"
+          },
+          {
+            "$ref": "#/$defs/StringListInput"
+          },
+          {
+            "$ref": "#/$defs/FileListInput"
+          },
+          {
+            "$ref": "#/$defs/IntegerListInput"
+          },
+          {
+            "$ref": "#/$defs/FloatListInput"
+          },
+          {
+            "$ref": "#/$defs/CommandLineFlaggedStringInput"
+          },
+          {
+            "$ref": "#/$defs/CommandLineFlaggedFileInput"
+          },
+          {
+            "$ref": "#/$defs/CommandLineFlaggedIntegerInput"
+          },
+          {
+            "$ref": "#/$defs/CommandLineFlaggedFloatInput"
+          },
+          {
+            "$ref": "#/$defs/CommandLineFlaggedStringListInput"
+          },
+          {
+            "$ref": "#/$defs/CommandLineFlaggedFileListInput"
+          },
+          {
+            "$ref": "#/$defs/CommandLineFlaggedIntegerListInput"
+          },
+          {
+            "$ref": "#/$defs/CommandLineFlaggedFloatListInput"
+          }
+        ]
       },
       "minItems": 1,
       "title": "Inputs",
@@ -1246,7 +4136,14 @@
       "anyOf": [
         {
           "items": {
-            "$ref": "#/$defs/Output"
+            "anyOf": [
+              {
+                "$ref": "#/$defs/PathTemplateOutput"
+              },
+              {
+                "$ref": "#/$defs/ConditionalPathTemplateOutput"
+              }
+            ]
           },
           "minItems": 1,
           "type": "array"
