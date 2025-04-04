@@ -4,10 +4,7 @@ permissions:
   contents: write
 
 on:
-  workflow_run:
-    workflows: [Python Tests]
-    types:
-    - completed
+  push:
     branches:
     - main
 
