@@ -26,7 +26,7 @@ jobs:
     - name: Generate JSON schemas
       run: |
         mkdir -p public
-        uv run 
+        uv run boutiques-schema-generator-all
     - name: Create index file
       run: |
         cat > public/index.html << EOL
