@@ -2,12 +2,12 @@
 
 A Python package providing Pydantic models for the Boutiques descriptor standard, with automatic JSON Schema generation for VS Code and other integrations.
 
-[![Build](https://github.com/childmindresearch/boutiques-schema-pydantic/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/childmindresearch/boutiques-schema-pydantic/actions/workflows/test.yaml?query=branch%3Amain)
-[![codecov](https://codecov.io/gh/childmindresearch/boutiques-schema-pydantic/branch/main/graph/badge.svg?token=22HWWFWPW5)](https://codecov.io/gh/childmindresearch/boutiques-schema-pydantic)
+[![Build](https://github.com/styx-api/boutiques-schema-pydantic/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/styx-api/boutiques-schema-pydantic/actions/workflows/test.yaml?query=branch%3Amain)
+[![codecov](https://codecov.io/gh/styx-api/boutiques-schema-pydantic/branch/main/graph/badge.svg?token=22HWWFWPW5)](https://codecov.io/gh/styx-api/boutiques-schema-pydantic)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 ![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/childmindresearch/boutiques-schema-pydantic/blob/main/LICENSE)
-[![pages](https://img.shields.io/badge/online-schemas-blue)](https://childmindresearch.github.io/boutiques-schema-pydantic)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/styx-api/boutiques-schema-pydantic/blob/main/LICENSE)
+[![pages](https://img.shields.io/badge/online-schemas-blue)](https://styx-api.github.io/boutiques-schema-pydantic)
 
 ## Overview
 
