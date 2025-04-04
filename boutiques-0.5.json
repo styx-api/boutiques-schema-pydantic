@@ -1,0 +1,1264 @@
+{
+  "$defs": {
+    "Assertion": {
+      "properties": {
+        "exit-code": {
+          "description": "Expected code returned by the program.",
+          "title": "Exit-Code",
+          "type": "integer"
+        },
+        "output-files": {
+          "items": {
+            "$ref": "#/$defs/OutputFile"
+          },
+          "minItems": 1,
+          "title": "Output-Files",
+          "type": "array"
+        }
+      },
+      "required": [
+        "exit-code",
+        "output-files"
+      ],
+      "title": "Assertion",
+      "type": "object"
+    },
+    "ContainerImage": {
+      "description": "Model for container image configuration.",
+      "properties": {
+        "type": {
+          "enum": [
+            "docker",
+            "singularity",
+            "rootfs"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "image": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Name of an image where the tool is installed and configured. Example: bids/mriqc.",
+          "title": "Image"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "URL where the image is available.",
+          "title": "Url"
+        },
+        "working-directory": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Location from which this task must be launched within the container.",
+          "title": "Working-Directory"
+        },
+        "container-hash": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Hash for the given container.",
+          "title": "Container-Hash"
+        },
+        "entrypoint": {
+          "default": false,
+          "description": "Flag indicating whether or not the container uses an entrypoint.",
+          "title": "Entrypoint",
+          "type": "boolean"
+        },
+        "index": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Optional index where the image is available, if not the standard location. Example: docker.io",
+          "title": "Index"
+        },
+        "container-opts": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Container-level arguments for the application. Example: --privileged",
+          "title": "Container-Opts"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "ContainerImage",
+      "type": "object"
+    },
+    "EnvironmentVariable": {
+      "description": "Model for environment variables.",
+      "properties": {
+        "name": {
+          "description": "The environment variable name (identifier) containing only alphanumeric characters and underscores. Example: \"PROGRAM_PATH\".",
+          "minLength": 1,
+          "pattern": "^[a-zA-Z][0-9_a-zA-Z]*$",
+          "title": "Name",
+          "type": "string"
+        },
+        "value": {
+          "description": "The value of the environment variable.",
+          "title": "Value",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Description of the environment variable.",
+          "title": "Description"
+        }
+      },
+      "required": [
+        "name",
+        "value"
+      ],
+      "title": "EnvironmentVariable",
+      "type": "object"
+    },
+    "ErrorCode": {
+      "description": "Model for error codes.",
+      "properties": {
+        "code": {
+          "description": "Value of the exit code",
+          "title": "Code",
+          "type": "integer"
+        },
+        "description": {
+          "description": "Description of the error code.",
+          "title": "Description",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "description"
+      ],
+      "title": "ErrorCode",
+      "type": "object"
+    },
+    "Group": {
+      "properties": {
+        "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"outfile_group\".",
+          "minLength": 1,
+          "pattern": "^[0-9,_,a-z,A-Z]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human-readable name for the input group.",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Description of the input group.",
+          "title": "Description"
+        },
+        "members": {
+          "description": "IDs of the inputs belonging to this group.",
+          "items": {
+            "pattern": "^[0-9,_,a-z,A-Z]*$",
+            "type": "string"
+          },
+          "title": "Members",
+          "type": "array"
+        },
+        "mutually-exclusive": {
+          "default": false,
+          "description": "True if only one input in the group may be active at runtime.",
+          "title": "Mutually-Exclusive",
+          "type": "boolean"
+        },
+        "one-is-required": {
+          "default": false,
+          "description": "True if at least one of the inputs in the group must be active at runtime.",
+          "title": "One-Is-Required",
+          "type": "boolean"
+        },
+        "all-or-none": {
+          "default": false,
+          "description": "True if members of the group need to be toggled together",
+          "title": "All-Or-None",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "members"
+      ],
+      "title": "Group",
+      "type": "object"
+    },
+    "Input": {
+      "description": "Model representing a Boutiques input.",
+      "properties": {
+        "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+          "minLength": 1,
+          "pattern": "^[0-9,_,a-z,A-Z]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human-readable name. Example: 'Data file'.",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "list": {
+          "default": false,
+          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
+          "title": "List",
+          "type": "boolean"
+        },
+        "optional": {
+          "default": false,
+          "description": "True if optional",
+          "title": "Optional",
+          "type": "boolean"
+        },
+        "command-line-flag": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "title": "Command-Line-Flag"
+        },
+        "command-line-flag-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between flags and their arguments. Defaults to a single space.",
+          "title": "Command-Line-Flag-Separator"
+        },
+        "uses-absolute-path": {
+          "default": false,
+          "description": "Specifies value must be given as an absolute path.",
+          "title": "Uses-Absolute-Path",
+          "type": "boolean"
+        },
+        "type": {
+          "anyOf": [
+            {
+              "enum": [
+                "String",
+                "File",
+                "Flag",
+                "Number"
+              ],
+              "type": "string"
+            },
+            {
+              "$ref": "#/$defs/SubInput"
+            },
+            {
+              "items": {
+                "$ref": "#/$defs/SubInput"
+              },
+              "type": "array"
+            }
+          ],
+          "title": "Type"
+        },
+        "list-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between list items. Defaults to a single space.",
+          "title": "List-Separator"
+        },
+        "requires-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs or ids of groups whose members must be active for this input to be available.",
+          "title": "Requires-Inputs"
+        },
+        "disables-inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Ids of the inputs that are disabled when this input is active.",
+          "title": "Disables-Inputs"
+        },
+        "value-choices": {
+          "anyOf": [
+            {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Permitted choices for input value. May not be used with the Flag type.",
+          "title": "Value-Choices"
+        },
+        "value-key": {
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key",
+          "type": "string"
+        },
+        "value_requires": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are required when the corresponding value choice is selected.",
+          "title": "Value Requires"
+        },
+        "value_enables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are enabled when the corresponding value choice is selected.",
+          "title": "Value Enables"
+        },
+        "value_disables": {
+          "anyOf": [
+            {},
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "deprecated": true,
+          "description": "Ids of the inputs that are disabled when the corresponding value choice is selected.",
+          "title": "Value Disables"
+        },
+        "integer": {
+          "default": false,
+          "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
+          "title": "Integer",
+          "type": "boolean"
+        },
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Minimum"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Maximum"
+        },
+        "exclusive-minimum": {
+          "default": false,
+          "description": "Specify whether the minimum is exclusive or not. May only be used with Number type inputs.",
+          "title": "Exclusive-Minimum",
+          "type": "boolean"
+        },
+        "exclusive-maximum": {
+          "default": false,
+          "description": "Specify whether the maximum is exclusive or not. May only be used with Number type inputs.",
+          "title": "Exclusive-Maximum",
+          "type": "boolean"
+        },
+        "min-list-entries": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum number of entries in the list. May only be used with List type inputs.",
+          "title": "Min-List-Entries"
+        },
+        "max-list-entries": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum number of entries in the list. May only be used with List type inputs.",
+          "title": "Max-List-Entries"
+        },
+        "resolve-parent": {
+          "default": false,
+          "description": "Specifies that the full parent directory of this file needs to be visible to the tool. Only specifiable for File type inputs.",
+          "title": "Resolve-Parent",
+          "type": "boolean"
+        },
+        "mutable": {
+          "default": false,
+          "description": "Specifies that the tool may modify the input file. Only specifiable for File type inputs.",
+          "title": "Mutable",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "type",
+        "value-key"
+      ],
+      "title": "Input",
+      "type": "object"
+    },
+    "Output": {
+      "description": "Model representing an output file.",
+      "properties": {
+        "id": {
+          "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
+          "minLength": 1,
+          "pattern": "^[0-9,_,a-z,A-Z]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "description": "A human-readable name. Example: 'Data file'.",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "list": {
+          "default": false,
+          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
+          "title": "List",
+          "type": "boolean"
+        },
+        "optional": {
+          "default": false,
+          "description": "True if optional",
+          "title": "Optional",
+          "type": "boolean"
+        },
+        "command-line-flag": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "title": "Command-Line-Flag"
+        },
+        "command-line-flag-separator": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Separator used between flags and their arguments. Defaults to a single space.",
+          "title": "Command-Line-Flag-Separator"
+        },
+        "uses-absolute-path": {
+          "default": false,
+          "description": "Specifies value must be given as an absolute path.",
+          "title": "Uses-Absolute-Path",
+          "type": "boolean"
+        },
+        "path-template": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Describes the output file path relatively to the execution directory. May contain input value keys and wildcards. Example: \"results/[INPUT1]_brain*.mnc\".",
+          "title": "Path-Template"
+        },
+        "conditional-path-template": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/PathProperty"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "List of objects containing boolean statement (Limited python syntax: ==, !=, <, >, <=, >=, and, or) and output file paths relative to the execution directory, assign path of first true boolean statement. May contain input value keys, \"default\" object required if \"optional\" set to True . Example list: \"[{\"[PARAM1] > 8\": \"outputs/[INPUT1].txt\"}, {\"default\": \"outputs/default.txt\"}]\".",
+          "title": "Conditional-Path-Template"
+        },
+        "path-template-stripped-extensions": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "List of file extensions that will be stripped from the input values before being substituted in the path template. Example: [\".nii\",\".nii.gz\"].",
+          "title": "Path-Template-Stripped-Extensions"
+        },
+        "file-template": {
+          "anyOf": [
+            {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "An array of strings that may contain value keys. Each item will be a line in the configuration file.",
+          "title": "File-Template"
+        },
+        "value-key": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
+          "title": "Value-Key"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ],
+      "title": "Output",
+      "type": "object"
+    },
+    "OutputFile": {
+      "properties": {
+        "id": {
+          "description": "Id referring to an output-file",
+          "minLength": 1,
+          "pattern": "^[0-9,_,a-z,A-Z]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "md5-reference": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "MD5 checksum string to match against the MD5 checksum of the output-file specified by the id object",
+          "title": "Md5-Reference"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "title": "OutputFile",
+      "type": "object"
+    },
+    "PathProperty": {
+      "description": "Model representing an path property.",
+      "properties": {
+        "propertyNames": {
+          "default": null,
+          "pattern": "^[A-Za-z0-9_><=!)( ]*$",
+          "title": "Propertynames",
+          "type": "string"
+        }
+      },
+      "title": "PathProperty",
+      "type": "object"
+    },
+    "SubInput": {
+      "description": "Model for complex input type with sub-command details.",
+      "properties": {
+        "id": {
+          "pattern": "^[0-9,_,a-z,A-Z]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "command-line": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Command-Line"
+        },
+        "inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Input"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "An array of input objects.",
+          "title": "Inputs"
+        },
+        "output-files": {
+          "anyOf": [
+            {
+              "items": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Output-Files"
+        },
+        "groups": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Group"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Groups"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ],
+      "title": "SubInput",
+      "type": "object"
+    },
+    "SuggestedResources": {
+      "description": "Model for suggested computational resources.",
+      "properties": {
+        "cpu-core": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The requested number of cpu cores to run the described application",
+          "title": "Cpu-Core"
+        },
+        "ram": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The requested number of GB RAM to run the described application",
+          "title": "Ram"
+        },
+        "disk-space": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The requested number of GB of storage to run the described application",
+          "title": "Disk-Space"
+        },
+        "nodes": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "The requested number of nodes to spread the described application across",
+          "title": "Nodes"
+        },
+        "walltime-estimate": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Estimated wall time of a task in seconds.",
+          "title": "Walltime-Estimate"
+        }
+      },
+      "required": [
+        "cpu-core",
+        "ram",
+        "disk-space",
+        "nodes",
+        "walltime-estimate"
+      ],
+      "title": "SuggestedResources",
+      "type": "object"
+    },
+    "TestCase": {
+      "description": "Model for test cases.",
+      "properties": {
+        "name": {
+          "description": "Name of the test-case",
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "invocation": {
+          "additionalProperties": true,
+          "title": "Invocation",
+          "type": "object"
+        },
+        "assertions": {
+          "$ref": "#/$defs/Assertion"
+        }
+      },
+      "required": [
+        "name",
+        "invocation",
+        "assertions"
+      ],
+      "title": "TestCase",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Complete Descriptor JSON schema model.",
+  "properties": {
+    "name": {
+      "description": "Tool name.",
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "description": {
+      "description": "Tool description.",
+      "minLength": 1,
+      "title": "Description",
+      "type": "string"
+    },
+    "tool-version": {
+      "description": "Tool version.",
+      "minLength": 1,
+      "title": "Tool-Version",
+      "type": "string"
+    },
+    "command-line": {
+      "description": "A string that describes the tool command line, where input and output values are identified by \"keys\". At runtime, command-line keys are substituted with flags and values.",
+      "title": "Command-Line",
+      "type": "string"
+    },
+    "schema-version": {
+      "const": "0.5",
+      "title": "Schema-Version",
+      "type": "string"
+    },
+    "inputs": {
+      "description": "An array of input objects",
+      "items": {
+        "$ref": "#/$defs/Input"
+      },
+      "minItems": 1,
+      "title": "Inputs",
+      "type": "array"
+    },
+    "deprecated-by-doi": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "doi of the tool that deprecates the current one. May be set to 'true' if the current tool is deprecated but no specific tool deprecates it.",
+      "title": "Deprecated-By-Doi"
+    },
+    "author": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Tool author name(s).",
+      "title": "Author"
+    },
+    "url": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Tool URL.",
+      "title": "Url"
+    },
+    "descriptor-url": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Link to the descriptor itself (e.g. the GitHub repo where it is hosted).",
+      "title": "Descriptor-Url"
+    },
+    "doi": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "DOI of the descriptor (not of the tool itself).",
+      "title": "Doi"
+    },
+    "shell": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Absolute path of the shell interpreter to use in the container (defaults to /bin/sh).",
+      "title": "Shell"
+    },
+    "tool-doi": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "DOI of the tool (not of the descriptor).",
+      "title": "Tool-Doi"
+    },
+    "container-image": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ContainerImage"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "environment-variables": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/EnvironmentVariable"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "An array of key-value pairs specifying environment variable names and their values to be used in the execution environment.",
+      "title": "Environment-Variables"
+    },
+    "groups": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/Group"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Sets of identifiers of inputs, each specifying an input group.",
+      "title": "Groups"
+    },
+    "tests": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/TestCase"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Tests"
+    },
+    "online-platform-urls": {
+      "anyOf": [
+        {
+          "pattern": "^https?://",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Online platform URLs from which the tool can be executed.",
+      "title": "Online-Platform-Urls"
+    },
+    "output-files": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/Output"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Output-Files"
+    },
+    "suggested-resources": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SuggestedResources",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "tags": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "boolean"
+              }
+            ]
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "A set of key-value pairs specifying tags describing the pipeline. The tag names are open, they might be more constrained in the future.",
+      "title": "Tags"
+    },
+    "error-codes": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/ErrorCode"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "An array of key-value pairs specifying exit codes and their description. Can be used for tools to specify the meaning of particular exit codes. Exit code 0 is assumed to indicate a successful execution.",
+      "title": "Error-Codes"
+    },
+    "custom": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Custom"
+    }
+  },
+  "required": [
+    "name",
+    "description",
+    "tool-version",
+    "command-line",
+    "schema-version",
+    "inputs"
+  ],
+  "title": "Descriptor",
+  "type": "object"
+}
