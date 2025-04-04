@@ -12,6 +12,10 @@ dependencies = [
   "pydantic>=2.11.2"
 ]
 
+[project.scripts]
+boutiques-schema-generator = "boutiques_schema_pydantic.cli:main"
+boutiques-schema-generator-all = "boutiques_schema_pydantic.generate_all_cli:main"
+
 [dependency-groups]
 dev = [
   "pytest>=8.3.4",
