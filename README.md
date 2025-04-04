@@ -1,59 +1,110 @@
-[![DOI](https://zenodo.org/badge/657341621.svg)](https://zenodo.org/doi/10.5281/zenodo.10383685)
+# boutiques-schema-pydantic
 
-# CMI-DAIR Template Python Repository
-
-Welcome to the CMI-DAIR Template Python Repository! This template is designed to streamline your project setup and ensure a consistent structure. To get started, follow these steps:
-
-- [x] Run `setup_template.py` to initialize the repository.
-- [ ] Replace the content of this `README.md` with details specific to your project.
-- [ ] Install the `pre-commit` hooks to ensure code quality on each commit.
-- [ ] Revise SECURITY.md to reflect supported versions or remove it if not applicable.
-- [ ] Remove the placeholder src and test files, these are there merely to show how the CI works.
-- [ ] If it hasn't already been done for your organization/acccount, grant third-party app permissions for CodeCov.
-- [ ] To set up an API documentation website, after the first successful build, go to the `Settings` tab of your repository, scroll down to the `GitHub Pages` section, and select `gh-pages` as the source. This will generate a link to your API docs.
-- [ ] Update stability badge in `README.md` to reflect the current state of the project. A list of stability badges to copy can be found [here](https://github.com/orangemug/stability-badges). The [node documentation](https://nodejs.org/docs/latest-v20.x/api/documentation.html#documentation_stability_index) can be used as a reference for the stability levels.
-
-# Project name
+A Python package providing Pydantic models for the Boutiques descriptor standard, with automatic JSON Schema generation for VS Code and other integrations.
 
 [![Build](https://github.com/childmindresearch/boutiques-schema-pydantic/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/childmindresearch/boutiques-schema-pydantic/actions/workflows/test.yaml?query=branch%3Amain)
 [![codecov](https://codecov.io/gh/childmindresearch/boutiques-schema-pydantic/branch/main/graph/badge.svg?token=22HWWFWPW5)](https://codecov.io/gh/childmindresearch/boutiques-schema-pydantic)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 ![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/childmindresearch/boutiques-schema-pydantic/blob/main/LICENSE)
-[![pages](https://img.shields.io/badge/api-docs-blue)](https://childmindresearch.github.io/boutiques-schema-pydantic)
+[![pages](https://img.shields.io/badge/online-schemas-blue)](https://childmindresearch.github.io/boutiques-schema-pydantic)
 
-What problem does this tool solve?
+## Overview
 
-## Features
+This package provides:
 
-- A few
-- Cool
-- Things
+1. Fully typed Pydantic models representing the Boutiques descriptor specification
+2. Automatic JSON Schema generation published to GitHub Pages
+3. Validation and serialization utilities for Boutiques descriptors
+4. VS Code integration for real-time validation and autocompletion
 
 ## Installation
 
-Install this package via :
-
-```sh
-pip install APP_NAME
+```bash
+pip install boutiques-schema-pydantic
 ```
 
-Or get the newest development version via:
+## Usage
 
-```sh
-pip install git+https://github.com/childmindresearch/boutiques-schema-pydantic
+### Basic Usage
+
+```python
+from boutiques_schema_pydantic.v_0_5 import Descriptor
+
+# Create a descriptor from scratch
+descriptor = Descriptor(
+    name="my-tool",
+    tool_version="0.1.0",
+    description="My amazing tool",
+    command_line="command [INPUT] [OUTPUT]",
+    inputs=[...],
+    output_files=[...],
+    # other required fields
+)
+
+# Validate and export to JSON
+descriptor_json = descriptor.model_dump_json(indent=2)
+with open("descriptor.json", "w") as f:
+    f.write(descriptor_json)
+
+# Load and validate an existing descriptor
+with open("existing_descriptor.json", "r") as f:
+    loaded_descriptor = Descriptor.model_validate_json(f.read())
 ```
 
-## Quick start
+### Schema Integration with VS Code
 
-Short tutorial, maybe with a
+This repository automatically publishes JSON Schema files to GitHub Pages, allowing for real-time validation and autocompletion in VS Code.
 
-```Python
-import APP_NAME
+To use this in VS Code:
 
-APP_NAME.short_example()
+1. Add the following to your VS Code `settings.json`:
+
+```json
+{
+    "json.schemas": [
+        {
+            "fileMatch": ["descriptors/**/*.json"],
+            "url": "https://styx-api.github.io/boutiques-schema-pydantic/boutiques-0.5.json"
+        }
+    ]
+}
 ```
 
-## Links or References
+2. Now when editing any file matching the patterns above, you'll get:
+   - Real-time validation
+   - Property autocompletion
+   - Documentation on hover
+   - IntelliSense suggestions
 
-- [https://www.wikipedia.de](https://www.wikipedia.de)
+## Development
+
+### Generate Schema Files
+
+
+```bash
+boutiques-schema-generator --help
+```
+
+Generate all schemas:
+
+```bash
+boutiques-schema-generator-all
+```
+
+This will create updated schema files in the `public/` directory.
+
+### Run Tests
+
+```bash
+pytest
+```
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- [Boutiques](https://boutiques.github.io/) for the descriptor standard
+- [Pydantic](https://docs.pydantic.dev/) for the data validation framework
