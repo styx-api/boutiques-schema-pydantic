@@ -1,3 +1,5 @@
+"""Model for Boutiques descriptor suggested-ressources property."""
+
 from typing import Optional
 
 import pydantic

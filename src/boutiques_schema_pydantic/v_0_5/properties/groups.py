@@ -1,3 +1,5 @@
+"""Model for Boutiques descriptor groups property."""
+
 from typing import Annotated, Optional
 
 import pydantic
@@ -6,8 +8,10 @@ from .. import StringProperty
 
 
 class Group(pydantic.BaseModel):
+    """Model for Boutiques descriptor groups property."""
+
     id: Annotated[
-        str, pydantic.StringConstraints(pattern=r"^[0-9,_,a-z,A-Z]*$", min_length=1)
+        str, pydantic.StringConstraints(pattern=r"^[0-9_a-zA-Z]+$", min_length=1)
     ] = pydantic.Field(
         description="A short, unique, informative identifier containing only "
         "alphanumeric characters and underscores. Typically used to generate variable "
@@ -20,7 +24,7 @@ class Group(pydantic.BaseModel):
         description="Description of the input group.", default=None
     )
     members: list[
-        Annotated[str, pydantic.StringConstraints(pattern=r"^[0-9,_,a-z,A-Z]*$")]
+        Annotated[str, pydantic.StringConstraints(pattern=r"^[0-9_a-zA-Z]+$")]
     ] = pydantic.Field(description="IDs of the inputs belonging to this group.")
     mutually_exclusive: bool = pydantic.Field(
         alias="mutually-exclusive",

@@ -1,3 +1,5 @@
+"""Models describing Boutiques properties."""
+
 from .containers import ContainerImage
 from .environment import EnvironmentVariable
 from .errors import ErrorCode

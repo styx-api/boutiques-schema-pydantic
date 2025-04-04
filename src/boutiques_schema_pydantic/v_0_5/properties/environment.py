@@ -1,3 +1,5 @@
+"""Model for Boutiques descriptor environment property."""
+
 from typing import Annotated, Optional
 
 import pydantic

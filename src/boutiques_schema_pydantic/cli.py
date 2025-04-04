@@ -1,4 +1,4 @@
-"""CLI used to"""
+"""CLI used to."""
 
 import argparse
 import json
@@ -14,14 +14,14 @@ ALL_NAMES = [
 
 
 def export_boutiques_0_5() -> dict[str, Any]:
-    """Export the Boutiques 0.5 JSON Schema"""
+    """Export the Boutiques 0.5 JSON Schema."""
     from boutiques_schema_pydantic.v_0_5.schema import Descriptor
 
     return Descriptor.model_json_schema()
 
 
 def get_schema(schema_name: str) -> dict[str, Any]:
-    """Get a schema by name"""
+    """Get a schema by name."""
     if schema_name == NAME_BOUTIQUES_0_5:
         return export_boutiques_0_5()
     # elif schema_name == NAME_BOUTIQUES_STYX_DESCRIPTOR_1:
@@ -30,7 +30,7 @@ def get_schema(schema_name: str) -> dict[str, Any]:
         raise ValueError(f"Unknown schema: {schema_name}")
 
 
-def main():
+def main() -> None:
     all_names_human = " or ".join([f"'{name}'" for name in ALL_NAMES])
 
     parser = argparse.ArgumentParser(description="Export Boutiques JSON Schema")

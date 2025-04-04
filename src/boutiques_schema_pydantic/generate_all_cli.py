@@ -1,6 +1,4 @@
-"""Script to generate all available Boutiques JSON schemas
-and save them to the public directory for GitHub Pages.
-"""
+"""Script to generate all available Boutiques JSON schemas."""
 
 import json
 import os
@@ -13,8 +11,8 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 from .cli import ALL_NAMES, get_schema
 
 
-def main():
-    """Generate all schemas and save them to the public directory"""
+def main() -> None:
+    """Generate all schemas and save them to the public directory."""
     output_dir = "public"
     os.makedirs(output_dir, exist_ok=True)
 

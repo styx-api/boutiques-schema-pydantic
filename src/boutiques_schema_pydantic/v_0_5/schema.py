@@ -1,6 +1,7 @@
 """Pydantic model for Styx frontend."""
 
-from typing import Annotated, Any, Literal, Optional, Self, Union
+import pathlib
+from typing import Annotated, Any, Literal, Optional, Union
 
 import pydantic
 
@@ -11,7 +12,9 @@ class Descriptor(pydantic.BaseModel):
     """Complete Descriptor JSON schema model."""
 
     model_config = pydantic.ConfigDict(
-        populate_by_name=True, extra="forbid", validate_assignment=True
+        populate_by_name=True,
+        extra="forbid",
+        validate_assignment=True,
     )
 
     # Required fields
@@ -41,10 +44,10 @@ class Descriptor(pydantic.BaseModel):
     author: Optional[StringProperty] = pydantic.Field(
         description="Tool author name(s).", default=None
     )
-    url: Optional[StringProperty] = pydantic.Field(
+    url: Optional[pydantic.HttpUrl] = pydantic.Field(
         description="Tool URL.", default=None
     )
-    descriptor_url: Optional[StringProperty] = pydantic.Field(
+    descriptor_url: Optional[pydantic.HttpUrl] = pydantic.Field(
         alias="descriptor-url",
         description="Link to the descriptor itself (e.g. the GitHub repo where it is "
         "hosted).",
@@ -53,9 +56,9 @@ class Descriptor(pydantic.BaseModel):
     doi: Optional[StringProperty] = pydantic.Field(
         description="DOI of the descriptor (not of the tool itself).", default=None
     )
-    shell: Optional[StringProperty] = pydantic.Field(
+    shell: Optional[pathlib.Path] = pydantic.Field(
         description="Absolute path of the shell interpreter to use in the container "
-        "(defaults to /bin/sh).",
+        "(Boutiques defaults to /bin/sh for null).",
         default=None,
     )
     tool_doi: Optional[StringProperty] = pydantic.Field(
@@ -82,9 +85,7 @@ class Descriptor(pydantic.BaseModel):
     tests: Optional[list[properties.TestCase]] = pydantic.Field(
         default=None, min_length=1
     )
-    online_platform_urls: Optional[
-        Annotated[str, pydantic.StringConstraints(pattern=r"^https?://")]
-    ] = pydantic.Field(
+    online_platform_urls: Optional[Annotated[str, pydantic.HttpUrl]] = pydantic.Field(
         alias="online-platform-urls",
         description="Online platform URLs from which the tool can be executed.",
         default=None,
@@ -109,10 +110,3 @@ class Descriptor(pydantic.BaseModel):
         default=None,
     )
     custom: Optional[dict[str, Any]] = None
-
-    @pydantic.model_validator(mode="after")
-    def validate_descriptor(self) -> Self:
-        """Additional validation for the entire descriptor."""
-        if self.schema_version != "0.5":
-            raise ValueError("Only schema version 0.5 is supported")
-        return self

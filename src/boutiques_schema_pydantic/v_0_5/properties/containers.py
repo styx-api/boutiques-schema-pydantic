@@ -1,23 +1,19 @@
-from typing import Literal, Optional, Self
+"""Model for Boutiques descriptor container-image property."""
+
+import abc
+import pathlib
+import typing
+from typing import Literal, Optional
 
 import pydantic
 
 from .. import StringProperty
 
 
-class ContainerImage(pydantic.BaseModel):
+class BaseContainerImage(pydantic.BaseModel, abc.ABC):
     """Model for container image configuration."""
 
-    type_: Literal["docker", "singularity", "rootfs"] = pydantic.Field(alias="type")
-    image: Optional[StringProperty] = pydantic.Field(
-        description="Name of an image where the tool is installed and configured. "
-        "Example: bids/mriqc.",
-        default=None,
-    )
-    url: Optional[StringProperty] = pydantic.Field(
-        description="URL where the image is available.", default=None
-    )
-    working_directory: Optional[StringProperty] = pydantic.Field(
+    working_directory: Optional[pathlib.Path] = pydantic.Field(
         alias="working-directory",
         description="Location from which this task must be launched within the "
         "container.",
@@ -44,18 +40,24 @@ class ContainerImage(pydantic.BaseModel):
         default=None,
     )
 
-    @pydantic.model_validator(mode="after")
-    def validate_container_properties(self) -> Self:
-        error_messages = {
-            "rootfs": "'url' parameter must be provided for container type 'rootfs'",
-            "docker": "'image' parameter must be provided for container type 'docker'",
-            "singularity": "'image' parameter must be provided for container type "
-            "'singularity'",
-        }
 
-        if (self.type_ == "rootfs" and self.url is None) or (
-            self.type_ in ["docker", "singularity"] and self.image is None
-        ):
-            raise ValueError(error_messages[self.type_])
+class DockerContainerImage(BaseContainerImage):
+    """Model for container image configuration."""
 
-        return self
+    type_: Literal["docker", "singularity"] = pydantic.Field(alias="type")
+    image: StringProperty = pydantic.Field(
+        description="Name of an image where the tool is installed and configured. "
+        "Example: bids/mriqc.",
+    )
+
+
+class RootfsContainerImage(BaseContainerImage):
+    """Model for container image configuration."""
+
+    type_: Literal["rootfs"] = pydantic.Field(alias="type")
+    url: pydantic.HttpUrl = pydantic.Field(
+        description="URL where the image is available.",
+    )
+
+
+ContainerImage = typing.Union[DockerContainerImage, RootfsContainerImage]

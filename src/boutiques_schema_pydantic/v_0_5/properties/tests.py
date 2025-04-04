@@ -1,3 +1,5 @@
+"""Model for Boutiques descriptor test property."""
+
 from typing import Annotated, Any, Optional
 
 import pydantic
@@ -6,8 +8,10 @@ from .. import StringProperty
 
 
 class OutputFile(pydantic.BaseModel):
+    """Boutiques test output file."""
+
     id: Annotated[
-        str, pydantic.StringConstraints(pattern=r"^[0-9,_,a-z,A-Z]*$", min_length=1)
+        str, pydantic.StringConstraints(pattern=r"^[0-9_a-zA-Z]+$", min_length=1)
     ] = pydantic.Field(description="Id referring to an output-file")
     md5_reference: Optional[str] = pydantic.Field(
         alias="md5-reference",
@@ -19,6 +23,8 @@ class OutputFile(pydantic.BaseModel):
 
 
 class Assertion(pydantic.BaseModel):
+    """Boutiques test assertion."""
+
     exit_code: int = pydantic.Field(
         alias="exit-code", description="Expected code returned by the program."
     )

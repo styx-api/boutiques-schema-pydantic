@@ -1,4 +1,6 @@
-from typing import Annotated, Any, Literal, Optional, Self, Union
+"""Model for Boutiques descriptor inputs property."""
+
+from typing import Annotated, Any, Literal, Never, Optional, Self, Union
 
 import pydantic
 
@@ -10,7 +12,7 @@ class IOModel(pydantic.BaseModel):
     """Base input / output model."""
 
     id: Annotated[
-        str, pydantic.StringConstraints(pattern=r"^[0-9,_,a-z,A-Z]*$", min_length=1)
+        str, pydantic.StringConstraints(pattern=r"^[0-9_a-zA-Z]+$", min_length=1)
     ] = pydantic.Field(
         description='A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: "data_file".',
     )
@@ -52,7 +54,7 @@ class IOModel(pydantic.BaseModel):
 class SubInput(pydantic.BaseModel):
     """Model for complex input type with sub-command details."""
 
-    id: Annotated[str, pydantic.StringConstraints(pattern=r"^[0-9,_,a-z,A-Z]+$")]
+    id: Annotated[str, pydantic.StringConstraints(pattern=r"^[0-9_a-zA-Z]+$")]
     name: str
     description: Optional[str] = pydantic.Field(default=None)
     command_line: Optional[str] = pydantic.Field(alias="command-line", default=None)
@@ -164,7 +166,7 @@ class Input(IOModel):
         if self.type_ == "Flag" and self.list_:
             raise ValueError("'list' cannot be true when input is of type 'Flag'")
 
-        def _raise_field_error(field: str, condition: str):
+        def _raise_field_error(field: str, condition: str) -> Never:
             """Helper to raise field-related errors."""
             raise ValueError(f"Field '{field}' {condition}")
 

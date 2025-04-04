@@ -1,3 +1,5 @@
+"""Model for Boutiques descriptor error-codes property."""
+
 import pydantic
 
 
