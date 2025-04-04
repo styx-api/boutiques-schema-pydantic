@@ -4,7 +4,8 @@ from .containers import ContainerImage
 from .environment import EnvironmentVariable
 from .errors import ErrorCode
 from .groups import Group
-from .io import Input, Output
+from .inputs import Input
+from .outputs import Output
 from .resources import SuggestedResources
 from .tests import TestCase
 

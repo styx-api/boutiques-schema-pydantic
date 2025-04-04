@@ -31,6 +31,7 @@ def get_schema(schema_name: str) -> dict[str, Any]:
 
 
 def main() -> None:
+    """Main."""
     all_names_human = " or ".join([f"'{name}'" for name in ALL_NAMES])
 
     parser = argparse.ArgumentParser(description="Export Boutiques JSON Schema")
