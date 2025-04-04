@@ -1,6 +1,7 @@
 {
   "$defs": {
     "Assertion": {
+      "description": "Boutiques test assertion.",
       "properties": {
         "exit-code": {
           "description": "Expected code returned by the program.",
@@ -23,50 +24,13 @@
       "title": "Assertion",
       "type": "object"
     },
-    "ContainerImage": {
+    "DockerContainerImage": {
       "description": "Model for container image configuration.",
       "properties": {
-        "type": {
-          "enum": [
-            "docker",
-            "singularity",
-            "rootfs"
-          ],
-          "title": "Type",
-          "type": "string"
-        },
-        "image": {
-          "anyOf": [
-            {
-              "minLength": 1,
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Name of an image where the tool is installed and configured. Example: bids/mriqc.",
-          "title": "Image"
-        },
-        "url": {
-          "anyOf": [
-            {
-              "minLength": 1,
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "URL where the image is available.",
-          "title": "Url"
-        },
         "working-directory": {
           "anyOf": [
             {
-              "minLength": 1,
+              "format": "path",
               "type": "string"
             },
             {
@@ -126,12 +90,27 @@
           "default": null,
           "description": "Container-level arguments for the application. Example: --privileged",
           "title": "Container-Opts"
+        },
+        "type": {
+          "enum": [
+            "docker",
+            "singularity"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "image": {
+          "description": "Name of an image where the tool is installed and configured. Example: bids/mriqc.",
+          "minLength": 1,
+          "title": "Image",
+          "type": "string"
         }
       },
       "required": [
-        "type"
+        "type",
+        "image"
       ],
-      "title": "ContainerImage",
+      "title": "DockerContainerImage",
       "type": "object"
     },
     "EnvironmentVariable": {
@@ -192,11 +171,12 @@
       "type": "object"
     },
     "Group": {
+      "description": "Model for Boutiques descriptor groups property.",
       "properties": {
         "id": {
           "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"outfile_group\".",
           "minLength": 1,
-          "pattern": "^[0-9,_,a-z,A-Z]*$",
+          "pattern": "^[0-9_a-zA-Z]+$",
           "title": "Id",
           "type": "string"
         },
@@ -222,7 +202,7 @@
         "members": {
           "description": "IDs of the inputs belonging to this group.",
           "items": {
-            "pattern": "^[0-9,_,a-z,A-Z]*$",
+            "pattern": "^[0-9_a-zA-Z]+$",
             "type": "string"
           },
           "title": "Members",
@@ -261,7 +241,7 @@
         "id": {
           "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
           "minLength": 1,
-          "pattern": "^[0-9,_,a-z,A-Z]*$",
+          "pattern": "^[0-9_a-zA-Z]+$",
           "title": "Id",
           "type": "string"
         },
@@ -557,7 +537,7 @@
         "id": {
           "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
           "minLength": 1,
-          "pattern": "^[0-9,_,a-z,A-Z]*$",
+          "pattern": "^[0-9_a-zA-Z]+$",
           "title": "Id",
           "type": "string"
         },
@@ -709,11 +689,12 @@
       "type": "object"
     },
     "OutputFile": {
+      "description": "Boutiques test output file.",
       "properties": {
         "id": {
           "description": "Id referring to an output-file",
           "minLength": 1,
-          "pattern": "^[0-9,_,a-z,A-Z]*$",
+          "pattern": "^[0-9_a-zA-Z]+$",
           "title": "Id",
           "type": "string"
         },
@@ -751,11 +732,99 @@
       "title": "PathProperty",
       "type": "object"
     },
+    "RootfsContainerImage": {
+      "description": "Model for container image configuration.",
+      "properties": {
+        "working-directory": {
+          "anyOf": [
+            {
+              "format": "path",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Location from which this task must be launched within the container.",
+          "title": "Working-Directory"
+        },
+        "container-hash": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Hash for the given container.",
+          "title": "Container-Hash"
+        },
+        "entrypoint": {
+          "default": false,
+          "description": "Flag indicating whether or not the container uses an entrypoint.",
+          "title": "Entrypoint",
+          "type": "boolean"
+        },
+        "index": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Optional index where the image is available, if not the standard location. Example: docker.io",
+          "title": "Index"
+        },
+        "container-opts": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Container-level arguments for the application. Example: --privileged",
+          "title": "Container-Opts"
+        },
+        "type": {
+          "const": "rootfs",
+          "title": "Type",
+          "type": "string"
+        },
+        "url": {
+          "description": "URL where the image is available.",
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "url"
+      ],
+      "title": "RootfsContainerImage",
+      "type": "object"
+    },
     "SubInput": {
       "description": "Model for complex input type with sub-command details.",
       "properties": {
         "id": {
-          "pattern": "^[0-9,_,a-z,A-Z]+$",
+          "pattern": "^[0-9_a-zA-Z]+$",
           "title": "Id",
           "type": "string"
         },
@@ -1022,6 +1091,8 @@
     "url": {
       "anyOf": [
         {
+          "format": "uri",
+          "maxLength": 2083,
           "minLength": 1,
           "type": "string"
         },
@@ -1036,6 +1107,8 @@
     "descriptor-url": {
       "anyOf": [
         {
+          "format": "uri",
+          "maxLength": 2083,
           "minLength": 1,
           "type": "string"
         },
@@ -1064,7 +1137,7 @@
     "shell": {
       "anyOf": [
         {
-          "minLength": 1,
+          "format": "path",
           "type": "string"
         },
         {
@@ -1072,7 +1145,7 @@
         }
       ],
       "default": null,
-      "description": "Absolute path of the shell interpreter to use in the container (defaults to /bin/sh).",
+      "description": "Absolute path of the shell interpreter to use in the container (Boutiques defaults to /bin/sh for null).",
       "title": "Shell"
     },
     "tool-doi": {
@@ -1092,13 +1165,17 @@
     "container-image": {
       "anyOf": [
         {
-          "$ref": "#/$defs/ContainerImage"
+          "$ref": "#/$defs/DockerContainerImage"
+        },
+        {
+          "$ref": "#/$defs/RootfsContainerImage"
         },
         {
           "type": "null"
         }
       ],
-      "default": null
+      "default": null,
+      "title": "Container-Image"
     },
     "environment-variables": {
       "anyOf": [
@@ -1152,7 +1229,9 @@
     "online-platform-urls": {
       "anyOf": [
         {
-          "pattern": "^https?://",
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
           "type": "string"
         },
         {
