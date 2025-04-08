@@ -2488,12 +2488,6 @@
           "title": "Id",
           "type": "string"
         },
-        "value-key": {
-          "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
-          "minLength": 1,
-          "title": "Value-Key",
-          "type": "string"
-        },
         "name": {
           "anyOf": [
             {
@@ -2546,7 +2540,6 @@
       },
       "required": [
         "id",
-        "value-key",
         "name",
         "path-template"
       ],
