@@ -1,6 +1,7 @@
 {
   "$defs": {
     "CommandLineFlaggedFileInput": {
+      "additionalProperties": false,
       "description": "File with a command line flag before it.",
       "properties": {
         "command-line-flag": {
@@ -98,6 +99,7 @@
       "type": "object"
     },
     "CommandLineFlaggedFileListInput": {
+      "additionalProperties": false,
       "description": "List of files with a command line flag before them.",
       "properties": {
         "command-line-flag": {
@@ -241,6 +243,7 @@
       "type": "object"
     },
     "CommandLineFlaggedFloatInput": {
+      "additionalProperties": false,
       "description": "Float with a command line flag before it.",
       "properties": {
         "command-line-flag": {
@@ -352,6 +355,7 @@
       "type": "object"
     },
     "CommandLineFlaggedFloatListInput": {
+      "additionalProperties": false,
       "description": "List of floats with a command line flag before them.",
       "properties": {
         "command-line-flag": {
@@ -544,6 +548,7 @@
       "type": "object"
     },
     "CommandLineFlaggedIntegerInput": {
+      "additionalProperties": false,
       "description": "Integer with a command line flag before it.",
       "properties": {
         "command-line-flag": {
@@ -690,6 +695,7 @@
       "type": "object"
     },
     "CommandLineFlaggedIntegerListInput": {
+      "additionalProperties": false,
       "description": "List of integers with a command line flag before them.",
       "properties": {
         "command-line-flag": {
@@ -882,6 +888,7 @@
       "type": "object"
     },
     "CommandLineFlaggedStringInput": {
+      "additionalProperties": false,
       "description": "String with a command line flag before it.",
       "properties": {
         "command-line-flag": {
@@ -995,6 +1002,7 @@
       "type": "object"
     },
     "CommandLineFlaggedStringListInput": {
+      "additionalProperties": false,
       "description": "List of strings with a command line flag before them.",
       "properties": {
         "command-line-flag": {
@@ -1187,6 +1195,7 @@
       "type": "object"
     },
     "CommandLineFlaggedSubCommandInput": {
+      "additionalProperties": false,
       "description": "Sub-command with a command line flag before it.",
       "properties": {
         "command-line-flag": {
@@ -1270,6 +1279,7 @@
       "type": "object"
     },
     "CommandLineFlaggedSubCommandListInput": {
+      "additionalProperties": false,
       "description": "List of sub-commands with a command line flag before them.",
       "properties": {
         "command-line-flag": {
@@ -1399,6 +1409,7 @@
       "type": "object"
     },
     "CommandLineFlaggedSubCommandUnionInput": {
+      "additionalProperties": false,
       "description": "Sub-commands union with a command line flag before it.",
       "properties": {
         "command-line-flag": {
@@ -1486,6 +1497,7 @@
       "type": "object"
     },
     "CommandLineFlaggedSubCommandUnionListInput": {
+      "additionalProperties": false,
       "description": "List of sub-command unions with a command line flag before them.",
       "properties": {
         "command-line-flag": {
@@ -1619,6 +1631,7 @@
       "type": "object"
     },
     "ContainerImage": {
+      "additionalProperties": false,
       "description": "Model for container image configuration.",
       "properties": {
         "type": {
@@ -1641,6 +1654,7 @@
       "type": "object"
     },
     "FileInput": {
+      "additionalProperties": false,
       "description": "File input.",
       "properties": {
         "id": {
@@ -1718,6 +1732,7 @@
       "type": "object"
     },
     "FileListInput": {
+      "additionalProperties": false,
       "description": "List of files.",
       "properties": {
         "list": {
@@ -1841,6 +1856,7 @@
       "type": "object"
     },
     "FlagInput": {
+      "additionalProperties": false,
       "description": "Flag input.",
       "properties": {
         "id": {
@@ -1918,6 +1934,7 @@
       "type": "object"
     },
     "FloatInput": {
+      "additionalProperties": false,
       "description": "Float input.",
       "properties": {
         "id": {
@@ -2009,6 +2026,7 @@
       "type": "object"
     },
     "FloatListInput": {
+      "additionalProperties": false,
       "description": "List of floats.",
       "properties": {
         "list": {
@@ -2181,6 +2199,7 @@
       "type": "object"
     },
     "IntegerInput": {
+      "additionalProperties": false,
       "description": "Integer input.",
       "properties": {
         "id": {
@@ -2307,6 +2326,7 @@
       "type": "object"
     },
     "IntegerListInput": {
+      "additionalProperties": false,
       "description": "List of integers.",
       "properties": {
         "list": {
@@ -2479,6 +2499,7 @@
       "type": "object"
     },
     "Output": {
+      "additionalProperties": false,
       "description": "Model representing an output file.",
       "properties": {
         "id": {
@@ -2547,6 +2568,7 @@
       "type": "object"
     },
     "StderrOutput": {
+      "additionalProperties": false,
       "description": "Model for stderr output configuration.",
       "properties": {
         "id": {
@@ -2591,6 +2613,7 @@
       "type": "object"
     },
     "StdoutOutput": {
+      "additionalProperties": false,
       "description": "Model for stdout output configuration.",
       "properties": {
         "id": {
@@ -2635,6 +2658,7 @@
       "type": "object"
     },
     "StringInput": {
+      "additionalProperties": false,
       "description": "String input.",
       "properties": {
         "id": {
@@ -2728,6 +2752,7 @@
       "type": "object"
     },
     "StringListInput": {
+      "additionalProperties": false,
       "description": "List of strings.",
       "properties": {
         "list": {
@@ -2900,6 +2925,7 @@
       "type": "object"
     },
     "SubCommandInput": {
+      "additionalProperties": false,
       "description": "Sub command.",
       "properties": {
         "id": {
@@ -2963,6 +2989,7 @@
       "type": "object"
     },
     "SubCommandListInput": {
+      "additionalProperties": false,
       "description": "List of sub-commands.",
       "properties": {
         "list": {
@@ -3072,6 +3099,7 @@
       "type": "object"
     },
     "SubCommandType": {
+      "additionalProperties": false,
       "description": "Sub-command specification.",
       "properties": {
         "command-line": {
@@ -3222,6 +3250,7 @@
       "type": "object"
     },
     "SubCommandUnionInput": {
+      "additionalProperties": false,
       "description": "Choice out of a list of possible sub-commands.",
       "properties": {
         "id": {
@@ -3289,6 +3318,7 @@
       "type": "object"
     },
     "SubCommandUnionListInput": {
+      "additionalProperties": false,
       "description": "List of sub-command unions.",
       "properties": {
         "list": {
