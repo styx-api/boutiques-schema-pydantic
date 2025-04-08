@@ -12,6 +12,7 @@ from .utils import IdStringProperty, StringProperty, ValueKeyStringProperty
 
 class BaseInput(pydantic.BaseModel):
     """Base input model."""
+    model_config = pydantic.ConfigDict(extra="forbid")
 
     id: IdStringProperty = pydantic.Field(
         description="A short, unique, informative identifier "
@@ -32,6 +33,7 @@ class BaseInput(pydantic.BaseModel):
 
 class CommandLineFlagged(pydantic.BaseModel):
     """Input has a command line flag preceding it."""
+    model_config = pydantic.ConfigDict(extra="forbid")
 
     command_line_flag: StringProperty = pydantic.Field(
         alias="command-line-flag",
@@ -49,6 +51,7 @@ class CommandLineFlagged(pydantic.BaseModel):
 
 class ListInput(pydantic.BaseModel):
     """Input is a list of objects."""
+    model_config = pydantic.ConfigDict(extra="forbid")
 
     list_: Literal[True] = pydantic.Field(
         alias="list",
@@ -215,6 +218,7 @@ class FlagInput(BaseInput):
 
 class SubCommand(pydantic.BaseModel):
     """Sub-command attriblutes shared between base descriptor and sub-commands."""
+    model_config = pydantic.ConfigDict(extra="forbid")
 
     command_line: StringProperty = pydantic.Field(
         alias="command-line",
@@ -407,6 +411,7 @@ Input = typing.Union[
 
 class Output(pydantic.BaseModel):
     """Model representing an output file."""
+    model_config = pydantic.ConfigDict(extra="forbid")
 
     id: IdStringProperty = pydantic.Field(
         description="A short, unique, informative identifier "
@@ -435,6 +440,7 @@ class Output(pydantic.BaseModel):
 
 class ContainerImage(pydantic.BaseModel):
     """Model for container image configuration."""
+    model_config = pydantic.ConfigDict(extra="forbid")
 
     type_: Literal["docker"] = pydantic.Field(alias="type")
     image: StringProperty = pydantic.Field(
@@ -445,6 +451,7 @@ class ContainerImage(pydantic.BaseModel):
 
 class StdoutOutput(pydantic.BaseModel):
     """Model for stdout output configuration."""
+    model_config = pydantic.ConfigDict(extra="forbid")
 
     id: IdStringProperty = pydantic.Field(
         description="A short, unique, informative identifier containing "
