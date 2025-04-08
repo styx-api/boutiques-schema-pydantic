@@ -9,13 +9,20 @@ NAME_BOUTIQUES_STYX_DESCRIPTOR_1 = "boutiques-styx-descriptor-1"
 
 ALL_NAMES = [
     NAME_BOUTIQUES_0_5,
-    # NAME_BOUTIQUES_STYX_DESCRIPTOR_1,
+    NAME_BOUTIQUES_STYX_DESCRIPTOR_1,
 ]
 
 
 def export_boutiques_0_5() -> dict[str, Any]:
-    """Export the Boutiques 0.5 JSON Schema."""
+    """Export the Boutiques Descriptor 0.5 JSON Schema."""
     from boutiques_schema_pydantic.v_0_5.schema import Descriptor
+
+    return Descriptor.model_json_schema()
+
+
+def export_styx_descriptor_1() -> dict[str, Any]:
+    """Export the Styx-style Boutiques Descriptor 0.1 JSON Schema."""
+    from boutiques_schema_pydantic.v_styx_1.descriptor import Descriptor
 
     return Descriptor.model_json_schema()
 
@@ -24,8 +31,8 @@ def get_schema(schema_name: str) -> dict[str, Any]:
     """Get a schema by name."""
     if schema_name == NAME_BOUTIQUES_0_5:
         return export_boutiques_0_5()
-    # elif schema_name == NAME_BOUTIQUES_STYX_DESCRIPTOR_1:
-    #    return export_boutiques_styx_descriptor_1()
+    elif schema_name == NAME_BOUTIQUES_STYX_DESCRIPTOR_1:
+        return export_styx_descriptor_1()
     else:
         raise ValueError(f"Unknown schema: {schema_name}")
 
