@@ -21,7 +21,7 @@ class BaseInput(pydantic.BaseModel):
     name: Optional[StringProperty] = pydantic.Field(
         description="A human-readable name. Example: 'Data file'.",
     )
-    description: Optional[str] = pydantic.Field(default=None)
+    description: Optional[StringProperty] = pydantic.Field(default=None)
 
     value_key: ValueKeyStringProperty = pydantic.Field(
         alias="value-key",
@@ -33,7 +33,7 @@ class BaseInput(pydantic.BaseModel):
 class CommandLineFlagged(pydantic.BaseModel):
     """Input has a command line flag preceding it."""
 
-    command_line_flag: str = pydantic.Field(
+    command_line_flag: StringProperty = pydantic.Field(
         alias="command-line-flag",
         description="Option flag, involved in the value-key substitution. "
         'Inputs of type "Flag" have to have a command-line flag. '
@@ -106,6 +106,12 @@ class FileInput(BaseInput):
     """File input."""
 
     type_: typing.Union[Literal["File"]] = pydantic.Field(alias="type")
+
+    mutable: Optional[bool] = pydantic.Field(
+        description="Specifies that the tool may modify the input file. "
+        "Only specifiable for File type inputs.",
+        default=None,
+    )
 
     optional: bool = pydantic.Field(description="True if optional", default=False)
 
@@ -208,6 +214,8 @@ class FlagInput(BaseInput):
 
 
 class SubCommand(pydantic.BaseModel):
+    """Sub-command attriblutes shared between base descriptor and sub-commands."""
+
     command_line: StringProperty = pydantic.Field(
         alias="command-line",
         description="A string that describes the tool command line, where input and "
@@ -225,6 +233,8 @@ class SubCommand(pydantic.BaseModel):
 
 
 class SubCommandType(SubCommand):
+    """Sub-command specification."""
+
     id: IdStringProperty = pydantic.Field(
         description="A short, unique, informative identifier "
         "containing only alphanumeric characters and underscores. "
@@ -237,6 +247,8 @@ class SubCommandType(SubCommand):
 
 
 class SubCommandInput(BaseInput):
+    """Sub command."""
+
     type_: SubCommandType = pydantic.Field(
         description="Sub-command type.", alias="type"
     )
@@ -245,6 +257,8 @@ class SubCommandInput(BaseInput):
 
 
 class SubCommandUnionInput(BaseInput):
+    """Choice out of a list of possible sub-commands."""
+
     type_: list[SubCommandType] = pydantic.Field(
         description="Sub-command type union.", alias="type"
     )
@@ -403,31 +417,23 @@ class Output(pydantic.BaseModel):
         alias="value-key",
         description="A string contained in command-line, substituted by the input "
         "value and/or flag at runtime.",
-        default=None,
     )
     name: Optional[StringProperty] = pydantic.Field(
         description="A human-readable name. Example: 'Data file'.",
     )
-    description: Optional[str] = pydantic.Field(default=None)
+    description: Optional[StringProperty] = pydantic.Field(default=None)
 
     path_template: StringProperty = pydantic.Field(
         alias="path-template",
         description="Describes the output file path relatively to the execution "
         "directory. May contain input value keys and wildcards. Example: "
         '"results/[INPUT1]_brain.mnc".',
-        default=None,
     )
-    path_template_stripped_extensions: Optional[list[str]] = pydantic.Field(
+    path_template_stripped_extensions: Optional[list[StringProperty]] = pydantic.Field(
         alias="path-template-stripped-extensions",
         description="List of file extensions that will be stripped from the input "
         "values before being substituted in the path template. Example: "
         '[".nii",".nii.gz"].',
-        default=None,
-    )
-
-    mutable: Optional[bool] = pydantic.Field(
-        description="Specifies that the tool may modify the input file. " \
-        "Only specifiable for File type inputs.",
         default=None,
     )
 
@@ -446,7 +452,7 @@ class StdoutOutput(pydantic.BaseModel):
     """Model for stdout output configuration."""
 
     id: IdStringProperty = pydantic.Field(
-        description="A short, unique, informative identifier containing " \
+        description="A short, unique, informative identifier containing "
         "only alphanumeric characters and underscores. "
         'Typically used to generate variable names. Example: "my_output"',
     )
