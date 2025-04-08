@@ -529,4 +529,7 @@ class Descriptor(SubCommand):
     )
 
 
+SubCommandType.model_rebuild()
+SubCommandInput.model_rebuild()
+SubCommandUnionInput.model_rebuild()
 Descriptor.model_rebuild()
