@@ -71,12 +71,12 @@ jobs:
                         <span class="json-badge">JSON</span>
                     </div>
                 </li>
-                <!--<li>
+                <li>
                     <div class="schema-link">
                         <a href="boutiques-styx-descriptor-1.json">Boutiques Styx Descriptor 1</a>
                         <span class="json-badge">JSON</span>
                     </div>
-                </li>-->
+                </li>
             </ul>
         </body>
         </html>
