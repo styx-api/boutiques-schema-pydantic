@@ -413,11 +413,6 @@ class Output(pydantic.BaseModel):
         "containing only alphanumeric characters and underscores. "
         'Typically used to generate variable names. Example: "data_file".',
     )
-    value_key: StringProperty = pydantic.Field(
-        alias="value-key",
-        description="A string contained in command-line, substituted by the input "
-        "value and/or flag at runtime.",
-    )
     name: Optional[StringProperty] = pydantic.Field(
         description="A human-readable name. Example: 'Data file'.",
     )
