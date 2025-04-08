@@ -468,58 +468,23 @@
           "type": "string"
         },
         "integer": {
-          "const": true,
-          "default": true,
+          "anyOf": [
+            {
+              "const": false,
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": false,
           "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
-          "title": "Integer",
-          "type": "boolean"
-        },
-        "minimum": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
-          "title": "Minimum"
-        },
-        "maximum": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
-          "title": "Maximum"
-        },
-        "value-choices": {
-          "anyOf": [
-            {
-              "items": {
-                "type": "integer"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Permitted choices for input value. May not be used with the Flag type.",
-          "title": "Value-Choices"
+          "title": "Integer"
         },
         "default-value": {
           "anyOf": [
             {
-              "type": "integer"
+              "type": "number"
             },
             {
               "type": "null"
@@ -1110,48 +1075,15 @@
           "type": "string"
         },
         "type": {
-          "const": "Number",
+          "const": "String",
           "title": "Type",
           "type": "string"
-        },
-        "integer": {
-          "const": true,
-          "default": true,
-          "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
-          "title": "Integer",
-          "type": "boolean"
-        },
-        "minimum": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
-          "title": "Minimum"
-        },
-        "maximum": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
-          "title": "Maximum"
         },
         "value-choices": {
           "anyOf": [
             {
               "items": {
-                "type": "integer"
+                "type": "string"
               },
               "type": "array"
             },
@@ -1166,7 +1098,7 @@
         "default-value": {
           "anyOf": [
             {
-              "type": "integer"
+              "type": "string"
             },
             {
               "type": "null"
@@ -2120,58 +2052,23 @@
           "type": "string"
         },
         "integer": {
-          "const": true,
-          "default": true,
+          "anyOf": [
+            {
+              "const": false,
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": false,
           "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
-          "title": "Integer",
-          "type": "boolean"
-        },
-        "minimum": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
-          "title": "Minimum"
-        },
-        "maximum": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
-          "title": "Maximum"
-        },
-        "value-choices": {
-          "anyOf": [
-            {
-              "items": {
-                "type": "integer"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Permitted choices for input value. May not be used with the Flag type.",
-          "title": "Value-Choices"
+          "title": "Integer"
         },
         "default-value": {
           "anyOf": [
             {
-              "type": "integer"
+              "type": "number"
             },
             {
               "type": "null"
@@ -2841,48 +2738,15 @@
           "type": "string"
         },
         "type": {
-          "const": "Number",
+          "const": "String",
           "title": "Type",
           "type": "string"
-        },
-        "integer": {
-          "const": true,
-          "default": true,
-          "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
-          "title": "Integer",
-          "type": "boolean"
-        },
-        "minimum": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
-          "title": "Minimum"
-        },
-        "maximum": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
-          "title": "Maximum"
         },
         "value-choices": {
           "anyOf": [
             {
               "items": {
-                "type": "integer"
+                "type": "string"
               },
               "type": "array"
             },
@@ -2897,7 +2761,7 @@
         "default-value": {
           "anyOf": [
             {
-              "type": "integer"
+              "type": "string"
             },
             {
               "type": "null"
