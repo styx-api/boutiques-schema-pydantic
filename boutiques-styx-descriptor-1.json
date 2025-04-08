@@ -5,6 +5,7 @@
       "properties": {
         "command-line-flag": {
           "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "minLength": 1,
           "title": "Command-Line-Flag",
           "type": "string"
         },
@@ -44,6 +45,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -64,6 +66,19 @@
           "const": "File",
           "title": "Type",
           "type": "string"
+        },
+        "mutable": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specifies that the tool may modify the input file. Only specifiable for File type inputs.",
+          "title": "Mutable"
         },
         "optional": {
           "default": false,
@@ -87,6 +102,7 @@
       "properties": {
         "command-line-flag": {
           "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "minLength": 1,
           "title": "Command-Line-Flag",
           "type": "string"
         },
@@ -171,6 +187,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -191,6 +208,19 @@
           "const": "File",
           "title": "Type",
           "type": "string"
+        },
+        "mutable": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specifies that the tool may modify the input file. Only specifiable for File type inputs.",
+          "title": "Mutable"
         },
         "optional": {
           "default": false,
@@ -215,6 +245,7 @@
       "properties": {
         "command-line-flag": {
           "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "minLength": 1,
           "title": "Command-Line-Flag",
           "type": "string"
         },
@@ -254,6 +285,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -324,6 +356,7 @@
       "properties": {
         "command-line-flag": {
           "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "minLength": 1,
           "title": "Command-Line-Flag",
           "type": "string"
         },
@@ -408,6 +441,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -514,6 +548,7 @@
       "properties": {
         "command-line-flag": {
           "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "minLength": 1,
           "title": "Command-Line-Flag",
           "type": "string"
         },
@@ -553,6 +588,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -658,6 +694,7 @@
       "properties": {
         "command-line-flag": {
           "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "minLength": 1,
           "title": "Command-Line-Flag",
           "type": "string"
         },
@@ -742,6 +779,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -848,6 +886,7 @@
       "properties": {
         "command-line-flag": {
           "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "minLength": 1,
           "title": "Command-Line-Flag",
           "type": "string"
         },
@@ -887,6 +926,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -959,6 +999,7 @@
       "properties": {
         "command-line-flag": {
           "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "minLength": 1,
           "title": "Command-Line-Flag",
           "type": "string"
         },
@@ -1043,6 +1084,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -1149,6 +1191,7 @@
       "properties": {
         "command-line-flag": {
           "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "minLength": 1,
           "title": "Command-Line-Flag",
           "type": "string"
         },
@@ -1188,6 +1231,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -1230,6 +1274,7 @@
       "properties": {
         "command-line-flag": {
           "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "minLength": 1,
           "title": "Command-Line-Flag",
           "type": "string"
         },
@@ -1314,6 +1359,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -1357,6 +1403,7 @@
       "properties": {
         "command-line-flag": {
           "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "minLength": 1,
           "title": "Command-Line-Flag",
           "type": "string"
         },
@@ -1396,6 +1443,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -1442,6 +1490,7 @@
       "properties": {
         "command-line-flag": {
           "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
+          "minLength": 1,
           "title": "Command-Line-Flag",
           "type": "string"
         },
@@ -1526,6 +1575,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -1616,6 +1666,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -1636,6 +1687,19 @@
           "const": "File",
           "title": "Type",
           "type": "string"
+        },
+        "mutable": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specifies that the tool may modify the input file. Only specifiable for File type inputs.",
+          "title": "Mutable"
         },
         "optional": {
           "default": false,
@@ -1724,6 +1788,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -1744,6 +1809,19 @@
           "const": "File",
           "title": "Type",
           "type": "string"
+        },
+        "mutable": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specifies that the tool may modify the input file. Only specifiable for File type inputs.",
+          "title": "Mutable"
         },
         "optional": {
           "default": false,
@@ -1788,6 +1866,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -1864,6 +1943,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -1999,6 +2079,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -2125,6 +2206,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -2295,6 +2377,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -2406,7 +2489,6 @@
           "type": "string"
         },
         "value-key": {
-          "default": null,
           "description": "A string contained in command-line, substituted by the input value and/or flag at runtime.",
           "minLength": 1,
           "title": "Value-Key",
@@ -2428,6 +2510,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -2438,7 +2521,6 @@
           "title": "Description"
         },
         "path-template": {
-          "default": null,
           "description": "Describes the output file path relatively to the execution directory. May contain input value keys and wildcards. Example: \"results/[INPUT1]_brain.mnc\".",
           "minLength": 1,
           "title": "Path-Template",
@@ -2448,6 +2530,7 @@
           "anyOf": [
             {
               "items": {
+                "minLength": 1,
                 "type": "string"
               },
               "type": "array"
@@ -2459,24 +2542,13 @@
           "default": null,
           "description": "List of file extensions that will be stripped from the input values before being substituted in the path template. Example: [\".nii\",\".nii.gz\"].",
           "title": "Path-Template-Stripped-Extensions"
-        },
-        "mutable": {
-          "anyOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "Specifies that the tool may modify the input file. Only specifiable for File type inputs.",
-          "title": "Mutable"
         }
       },
       "required": [
         "id",
-        "name"
+        "value-key",
+        "name",
+        "path-template"
       ],
       "title": "Output",
       "type": "object"
@@ -2595,6 +2667,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -2732,6 +2805,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -2833,6 +2907,7 @@
       "type": "object"
     },
     "SubCommandInput": {
+      "description": "Sub command.",
       "properties": {
         "id": {
           "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
@@ -2857,6 +2932,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -2964,6 +3040,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -3002,6 +3079,7 @@
       "type": "object"
     },
     "SubCommandType": {
+      "description": "Sub-command specification.",
       "properties": {
         "command-line": {
           "description": "A string that describes the tool command line, where input and output values are identified by \"keys\". At runtime, command-line keys are substituted with flags and values.",
@@ -3151,6 +3229,7 @@
       "type": "object"
     },
     "SubCommandUnionInput": {
+      "description": "Choice out of a list of possible sub-commands.",
       "properties": {
         "id": {
           "description": "A short, unique, informative identifier containing only alphanumeric characters and underscores. Typically used to generate variable names. Example: \"data_file\".",
@@ -3175,6 +3254,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
@@ -3286,6 +3366,7 @@
         "description": {
           "anyOf": [
             {
+              "minLength": 1,
               "type": "string"
             },
             {
