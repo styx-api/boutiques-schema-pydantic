@@ -280,13 +280,13 @@ class IntegerListInput(IntegerInput, ListInput):
     pass
 
 
-class FloatListInput(IntegerInput, ListInput):
+class FloatListInput(FloatInput, ListInput):
     """List of floats."""
 
     pass
 
 
-class StringListInput(IntegerInput, ListInput):
+class StringListInput(StringInput, ListInput):
     """List of strings."""
 
     pass
