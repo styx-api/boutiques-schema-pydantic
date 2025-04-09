@@ -428,6 +428,7 @@ class Output(pydantic.BaseModel):
     )
     name: Optional[StringProperty] = pydantic.Field(
         description="A human-readable name. Example: 'Data file'.",
+        default=None,
     )
     description: Optional[StringProperty] = pydantic.Field(default=None)
 
@@ -494,9 +495,10 @@ class Descriptor(SubCommand):
         validate_assignment=True,
     )
 
-    name: Optional[StringProperty] = pydantic.Field(description="Tool name.")
+    name: StringProperty = pydantic.Field(description="Tool name.")
     description: Optional[StringProperty] = pydantic.Field(
-        description="Tool description."
+        description="Tool description.",
+        default=None,
     )
 
     # Required fields
