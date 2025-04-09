@@ -1902,6 +1902,13 @@
           "description": "Option flag, involved in the value-key substitution. Inputs of type \"Flag\" have to have a command-line flag. Examples: -v, --force.",
           "title": "Command-Line-Flag",
           "type": "string"
+        },
+        "optional": {
+          "default": false,
+          "deprecated": true,
+          "description": "Optional has no meaning for Flag type inputs",
+          "title": "Optional",
+          "type": "boolean"
         }
       },
       "required": [
