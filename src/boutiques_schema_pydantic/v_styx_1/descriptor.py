@@ -238,6 +238,12 @@ class FlagInput(BaseInput):
         "Examples: -v, --force.",
     )
 
+    optional: bool = pydantic.Field(
+        description="Optional has no meaning for Flag type inputs",
+        default=False,
+        deprecated=True,
+    )
+
 
 class SubCommand(pydantic.BaseModel):
     """Sub-command attriblutes shared between base descriptor and sub-commands."""
