@@ -64,13 +64,6 @@
           "title": "Value-Key",
           "type": "string"
         },
-        "list": {
-          "const": false,
-          "default": false,
-          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
-          "title": "List",
-          "type": "boolean"
-        },
         "type": {
           "const": "File",
           "title": "Type",
@@ -129,8 +122,7 @@
           "title": "Command-Line-Flag-Separator"
         },
         "list": {
-          "const": false,
-          "default": false,
+          "const": true,
           "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
           "title": "List",
           "type": "boolean"
@@ -242,6 +234,7 @@
       },
       "required": [
         "command-line-flag",
+        "list",
         "id",
         "value-key",
         "type"
@@ -312,13 +305,6 @@
           "pattern": "^\\[[0-9_A-Z]+\\]$",
           "title": "Value-Key",
           "type": "string"
-        },
-        "list": {
-          "const": false,
-          "default": false,
-          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
-          "title": "List",
-          "type": "boolean"
         },
         "type": {
           "const": "Number",
@@ -392,8 +378,7 @@
           "title": "Command-Line-Flag-Separator"
         },
         "list": {
-          "const": false,
-          "default": false,
+          "const": true,
           "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
           "title": "List",
           "type": "boolean"
@@ -519,6 +504,7 @@
       },
       "required": [
         "command-line-flag",
+        "list",
         "id",
         "value-key",
         "type"
@@ -589,13 +575,6 @@
           "pattern": "^\\[[0-9_A-Z]+\\]$",
           "title": "Value-Key",
           "type": "string"
-        },
-        "list": {
-          "const": false,
-          "default": false,
-          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
-          "title": "List",
-          "type": "boolean"
         },
         "type": {
           "const": "Number",
@@ -704,8 +683,7 @@
           "title": "Command-Line-Flag-Separator"
         },
         "list": {
-          "const": false,
-          "default": false,
+          "const": true,
           "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
           "title": "List",
           "type": "boolean"
@@ -866,6 +844,7 @@
       },
       "required": [
         "command-line-flag",
+        "list",
         "id",
         "value-key",
         "type"
@@ -936,13 +915,6 @@
           "pattern": "^\\[[0-9_A-Z]+\\]$",
           "title": "Value-Key",
           "type": "string"
-        },
-        "list": {
-          "const": false,
-          "default": false,
-          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
-          "title": "List",
-          "type": "boolean"
         },
         "type": {
           "const": "String",
@@ -1018,8 +990,7 @@
           "title": "Command-Line-Flag-Separator"
         },
         "list": {
-          "const": false,
-          "default": false,
+          "const": true,
           "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
           "title": "List",
           "type": "boolean"
@@ -1147,6 +1118,7 @@
       },
       "required": [
         "command-line-flag",
+        "list",
         "id",
         "value-key",
         "type"
@@ -1218,13 +1190,6 @@
           "title": "Value-Key",
           "type": "string"
         },
-        "list": {
-          "const": false,
-          "default": false,
-          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
-          "title": "List",
-          "type": "boolean"
-        },
         "type": {
           "$ref": "#/$defs/SubCommandType",
           "description": "Sub-command type."
@@ -1269,8 +1234,7 @@
           "title": "Command-Line-Flag-Separator"
         },
         "list": {
-          "const": false,
-          "default": false,
+          "const": true,
           "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
           "title": "List",
           "type": "boolean"
@@ -1368,6 +1332,7 @@
       },
       "required": [
         "command-line-flag",
+        "list",
         "id",
         "value-key",
         "type"
@@ -1439,13 +1404,6 @@
           "title": "Value-Key",
           "type": "string"
         },
-        "list": {
-          "const": false,
-          "default": false,
-          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
-          "title": "List",
-          "type": "boolean"
-        },
         "type": {
           "description": "Sub-command type union.",
           "items": {
@@ -1494,8 +1452,7 @@
           "title": "Command-Line-Flag-Separator"
         },
         "list": {
-          "const": false,
-          "default": false,
+          "const": true,
           "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
           "title": "List",
           "type": "boolean"
@@ -1597,6 +1554,7 @@
       },
       "required": [
         "command-line-flag",
+        "list",
         "id",
         "value-key",
         "type"
@@ -1672,13 +1630,6 @@
           "title": "Value-Key",
           "type": "string"
         },
-        "list": {
-          "const": false,
-          "default": false,
-          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
-          "title": "List",
-          "type": "boolean"
-        },
         "type": {
           "const": "File",
           "title": "Type",
@@ -1717,8 +1668,7 @@
       "description": "List of files.",
       "properties": {
         "list": {
-          "const": false,
-          "default": false,
+          "const": true,
           "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
           "title": "List",
           "type": "boolean"
@@ -1829,6 +1779,7 @@
         }
       },
       "required": [
+        "list",
         "id",
         "value-key",
         "type"
@@ -1880,13 +1831,6 @@
           "pattern": "^\\[[0-9_A-Z]+\\]$",
           "title": "Value-Key",
           "type": "string"
-        },
-        "list": {
-          "const": false,
-          "default": false,
-          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
-          "title": "List",
-          "type": "boolean"
         },
         "type": {
           "const": "Flag",
@@ -1966,13 +1910,6 @@
           "title": "Value-Key",
           "type": "string"
         },
-        "list": {
-          "const": false,
-          "default": false,
-          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
-          "title": "List",
-          "type": "boolean"
-        },
         "type": {
           "const": "Number",
           "title": "Type",
@@ -2025,8 +1962,7 @@
       "description": "List of floats.",
       "properties": {
         "list": {
-          "const": false,
-          "default": false,
+          "const": true,
           "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
           "title": "List",
           "type": "boolean"
@@ -2151,6 +2087,7 @@
         }
       },
       "required": [
+        "list",
         "id",
         "value-key",
         "type"
@@ -2202,13 +2139,6 @@
           "pattern": "^\\[[0-9_A-Z]+\\]$",
           "title": "Value-Key",
           "type": "string"
-        },
-        "list": {
-          "const": false,
-          "default": false,
-          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
-          "title": "List",
-          "type": "boolean"
         },
         "type": {
           "const": "Number",
@@ -2297,8 +2227,7 @@
       "description": "List of integers.",
       "properties": {
         "list": {
-          "const": false,
-          "default": false,
+          "const": true,
           "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
           "title": "List",
           "type": "boolean"
@@ -2458,6 +2387,7 @@
         }
       },
       "required": [
+        "list",
         "id",
         "value-key",
         "type"
@@ -2669,13 +2599,6 @@
           "title": "Value-Key",
           "type": "string"
         },
-        "list": {
-          "const": false,
-          "default": false,
-          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
-          "title": "List",
-          "type": "boolean"
-        },
         "type": {
           "const": "String",
           "title": "Type",
@@ -2730,8 +2653,7 @@
       "description": "List of strings.",
       "properties": {
         "list": {
-          "const": false,
-          "default": false,
+          "const": true,
           "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
           "title": "List",
           "type": "boolean"
@@ -2858,6 +2780,7 @@
         }
       },
       "required": [
+        "list",
         "id",
         "value-key",
         "type"
@@ -2910,13 +2833,6 @@
           "title": "Value-Key",
           "type": "string"
         },
-        "list": {
-          "const": false,
-          "default": false,
-          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
-          "title": "List",
-          "type": "boolean"
-        },
         "type": {
           "$ref": "#/$defs/SubCommandType",
           "description": "Sub-command type."
@@ -2941,8 +2857,7 @@
       "description": "List of sub-commands.",
       "properties": {
         "list": {
-          "const": false,
-          "default": false,
+          "const": true,
           "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
           "title": "List",
           "type": "boolean"
@@ -3039,6 +2954,7 @@
         }
       },
       "required": [
+        "list",
         "id",
         "value-key",
         "type"
@@ -3249,13 +3165,6 @@
           "title": "Value-Key",
           "type": "string"
         },
-        "list": {
-          "const": false,
-          "default": false,
-          "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
-          "title": "List",
-          "type": "boolean"
-        },
         "type": {
           "description": "Sub-command type union.",
           "items": {
@@ -3284,8 +3193,7 @@
       "description": "List of sub-command unions.",
       "properties": {
         "list": {
-          "const": false,
-          "default": false,
+          "const": true,
           "description": "True if list of values. If value is of type \"Flag\" cannot be a list.",
           "title": "List",
           "type": "boolean"
@@ -3386,6 +3294,7 @@
         }
       },
       "required": [
+        "list",
         "id",
         "value-key",
         "type"
