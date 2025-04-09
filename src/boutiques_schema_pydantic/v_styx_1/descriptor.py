@@ -114,10 +114,17 @@ class FileInput(BaseInput):
 
     type_: typing.Union[Literal["File"]] = pydantic.Field(alias="type")
 
-    mutable: Optional[bool] = pydantic.Field(
+    mutable: bool = pydantic.Field(
         description="Specifies that the tool may modify the input file. "
         "Only specifiable for File type inputs.",
-        default=None,
+        default=False,
+    )
+    resolve_parent: bool = pydantic.Field(
+        alias="resolve-parent",
+        description="Specifies that the full parent directory of this file "
+        "needs to be visible to the tool. "
+        "Only specifiable for File type inputs.",
+        default=False,
     )
 
     optional: bool = pydantic.Field(description="True if optional", default=False)
@@ -178,7 +185,7 @@ class FloatInput(BaseInput):
         "May only be used with Number type inputs.",
         default=False,
     )
-    
+
     minimum: Optional[float] = pydantic.Field(
         description="Specify the minimum value of the input (inclusive). "
         "May only be used with Number type inputs.",
