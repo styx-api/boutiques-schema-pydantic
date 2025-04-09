@@ -134,12 +134,12 @@ class IntegerInput(BaseInput):
         default=True,
     )
 
-    minimum: Optional[float] = pydantic.Field(
+    minimum: Optional[int] = pydantic.Field(
         description="Specify the minimum value of the input (inclusive). "
         "May only be used with Number type inputs.",
         default=None,
     )
-    maximum: Optional[float] = pydantic.Field(
+    maximum: Optional[int] = pydantic.Field(
         description="Specify the maximum value of the input (inclusive). "
         "May only be used with Number type inputs.",
         default=None,
@@ -178,6 +178,18 @@ class FloatInput(BaseInput):
         "May only be used with Number type inputs.",
         default=False,
     )
+    
+    minimum: Optional[float] = pydantic.Field(
+        description="Specify the minimum value of the input (inclusive). "
+        "May only be used with Number type inputs.",
+        default=None,
+    )
+    maximum: Optional[float] = pydantic.Field(
+        description="Specify the maximum value of the input (inclusive). "
+        "May only be used with Number type inputs.",
+        default=None,
+    )
+
     default_value: Optional[float] = pydantic.Field(
         alias="default-value",
         description="Default value of the input. "
