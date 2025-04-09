@@ -70,17 +70,16 @@
           "type": "string"
         },
         "mutable": {
-          "anyOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
+          "default": false,
           "description": "Specifies that the tool may modify the input file. Only specifiable for File type inputs.",
-          "title": "Mutable"
+          "title": "Mutable",
+          "type": "boolean"
+        },
+        "resolve-parent": {
+          "default": false,
+          "description": "Specifies that the full parent directory of this file needs to be visible to the tool. Only specifiable for File type inputs.",
+          "title": "Resolve-Parent",
+          "type": "boolean"
         },
         "optional": {
           "default": false,
@@ -213,17 +212,16 @@
           "type": "string"
         },
         "mutable": {
-          "anyOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
+          "default": false,
           "description": "Specifies that the tool may modify the input file. Only specifiable for File type inputs.",
-          "title": "Mutable"
+          "title": "Mutable",
+          "type": "boolean"
+        },
+        "resolve-parent": {
+          "default": false,
+          "description": "Specifies that the full parent directory of this file needs to be visible to the tool. Only specifiable for File type inputs.",
+          "title": "Resolve-Parent",
+          "type": "boolean"
         },
         "optional": {
           "default": false,
@@ -324,6 +322,32 @@
           "default": false,
           "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
           "title": "Integer"
+        },
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Minimum"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Maximum"
         },
         "default-value": {
           "anyOf": [
@@ -482,6 +506,32 @@
           "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
           "title": "Integer"
         },
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Minimum"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Maximum"
+        },
         "default-value": {
           "anyOf": [
             {
@@ -591,7 +641,7 @@
         "minimum": {
           "anyOf": [
             {
-              "type": "number"
+              "type": "integer"
             },
             {
               "type": "null"
@@ -604,7 +654,7 @@
         "maximum": {
           "anyOf": [
             {
-              "type": "number"
+              "type": "integer"
             },
             {
               "type": "null"
@@ -783,7 +833,7 @@
         "minimum": {
           "anyOf": [
             {
-              "type": "number"
+              "type": "integer"
             },
             {
               "type": "null"
@@ -796,7 +846,7 @@
         "maximum": {
           "anyOf": [
             {
-              "type": "number"
+              "type": "integer"
             },
             {
               "type": "null"
@@ -1636,17 +1686,16 @@
           "type": "string"
         },
         "mutable": {
-          "anyOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
+          "default": false,
           "description": "Specifies that the tool may modify the input file. Only specifiable for File type inputs.",
-          "title": "Mutable"
+          "title": "Mutable",
+          "type": "boolean"
+        },
+        "resolve-parent": {
+          "default": false,
+          "description": "Specifies that the full parent directory of this file needs to be visible to the tool. Only specifiable for File type inputs.",
+          "title": "Resolve-Parent",
+          "type": "boolean"
         },
         "optional": {
           "default": false,
@@ -1759,17 +1808,16 @@
           "type": "string"
         },
         "mutable": {
-          "anyOf": [
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
+          "default": false,
           "description": "Specifies that the tool may modify the input file. Only specifiable for File type inputs.",
-          "title": "Mutable"
+          "title": "Mutable",
+          "type": "boolean"
+        },
+        "resolve-parent": {
+          "default": false,
+          "description": "Specifies that the full parent directory of this file needs to be visible to the tool. Only specifiable for File type inputs.",
+          "title": "Resolve-Parent",
+          "type": "boolean"
         },
         "optional": {
           "default": false,
@@ -1929,6 +1977,32 @@
           "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
           "title": "Integer"
         },
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Minimum"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Maximum"
+        },
         "default-value": {
           "anyOf": [
             {
@@ -2066,6 +2140,32 @@
           "description": "Specify whether the input should be an integer. May only be used with Number type inputs.",
           "title": "Integer"
         },
+        "minimum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the minimum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Minimum"
+        },
+        "maximum": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Specify the maximum value of the input (inclusive). May only be used with Number type inputs.",
+          "title": "Maximum"
+        },
         "default-value": {
           "anyOf": [
             {
@@ -2155,7 +2255,7 @@
         "minimum": {
           "anyOf": [
             {
-              "type": "number"
+              "type": "integer"
             },
             {
               "type": "null"
@@ -2168,7 +2268,7 @@
         "maximum": {
           "anyOf": [
             {
-              "type": "number"
+              "type": "integer"
             },
             {
               "type": "null"
@@ -2327,7 +2427,7 @@
         "minimum": {
           "anyOf": [
             {
-              "type": "number"
+              "type": "integer"
             },
             {
               "type": "null"
@@ -2340,7 +2440,7 @@
         "maximum": {
           "anyOf": [
             {
-              "type": "number"
+              "type": "integer"
             },
             {
               "type": "null"
