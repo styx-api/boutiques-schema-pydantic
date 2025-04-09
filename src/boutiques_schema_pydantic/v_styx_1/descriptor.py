@@ -22,6 +22,7 @@ class BaseInput(pydantic.BaseModel):
     )
     name: Optional[StringProperty] = pydantic.Field(
         description="A human-readable name. Example: 'Data file'.",
+        default=None,
     )
     description: Optional[StringProperty] = pydantic.Field(default=None)
 
@@ -231,8 +232,9 @@ class SubCommand(pydantic.BaseModel):
         "substituted with flags and values.",
     )
 
-    inputs: list[Input] = pydantic.Field(
+    inputs: Optional[list[Input]] = pydantic.Field(
         description="An array of input objects",
+        default=None,
     )
     output_files: Optional[list[Output]] = pydantic.Field(
         alias="output-files",
@@ -250,6 +252,7 @@ class SubCommandType(SubCommand):
     )
     name: Optional[StringProperty] = pydantic.Field(
         description="A human-readable name. Example: 'Data file'.",
+        default=None,
     )
     description: Optional[str] = pydantic.Field(default=None)
 
