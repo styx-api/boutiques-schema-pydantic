@@ -2416,6 +2416,7 @@
               "type": "null"
             }
           ],
+          "default": null,
           "description": "A human-readable name. Example: 'Data file'.",
           "title": "Name"
         },
@@ -2458,7 +2459,6 @@
       },
       "required": [
         "id",
-        "name",
         "path-template"
       ],
       "title": "Output",
@@ -3420,17 +3420,10 @@
       "title": "Output-Files"
     },
     "name": {
-      "anyOf": [
-        {
-          "minLength": 1,
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
       "description": "Tool name.",
-      "title": "Name"
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
     },
     "description": {
       "anyOf": [
@@ -3442,6 +3435,7 @@
           "type": "null"
         }
       ],
+      "default": null,
       "description": "Tool description.",
       "title": "Description"
     },
@@ -3528,7 +3522,6 @@
   "required": [
     "command-line",
     "name",
-    "description",
     "tool-version",
     "schema-version"
   ],
