@@ -532,10 +532,7 @@ class Descriptor(SubCommand):
     )
 
     # Required fields
-    tool_version: StringProperty = pydantic.Field(
-        alias="tool-version", description="Tool version."
-    )
-    schema_version: Literal["0.5", "0.5+styx"] = pydantic.Field(alias="schema-version")
+    schema_version: Literal["0.5+styx"] = pydantic.Field(alias="schema-version")
 
     # Optional fields
     author: Optional[StringProperty] = pydantic.Field(
@@ -544,10 +541,6 @@ class Descriptor(SubCommand):
     )
     url: Optional[pydantic.HttpUrl] = pydantic.Field(
         description="Tool URL.",
-        default=None,
-    )
-    container_image: Optional[ContainerImage] = pydantic.Field(
-        alias="container-image",
         default=None,
     )
     stdout_output: Optional[StdoutOutput] = pydantic.Field(
