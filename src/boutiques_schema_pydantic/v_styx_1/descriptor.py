@@ -84,7 +84,7 @@ class ListInput(pydantic.BaseModel):
 class StringInput(BaseInput):
     """String input."""
 
-    type_: typing.Union[Literal["String"]] = pydantic.Field(alias="type")
+    type_: Literal["String"] = pydantic.Field(alias="type")
 
     value_choices: Optional[list[str]] = pydantic.Field(
         alias="value-choices",
@@ -112,7 +112,7 @@ class StringInput(BaseInput):
 class FileInput(BaseInput):
     """File input."""
 
-    type_: typing.Union[Literal["File"]] = pydantic.Field(alias="type")
+    type_: Literal["File"] = pydantic.Field(alias="type")
 
     mutable: bool = pydantic.Field(
         description="Specifies that the tool may modify the input file. "
@@ -133,7 +133,7 @@ class FileInput(BaseInput):
 class IntegerInput(BaseInput):
     """Integer input."""
 
-    type_: typing.Union[Literal["Number"]] = pydantic.Field(alias="type")
+    type_: Literal["Number"] = pydantic.Field(alias="type")
 
     integer: Literal[True] = pydantic.Field(
         description="Specify whether the input should be an integer. "
@@ -178,7 +178,7 @@ class IntegerInput(BaseInput):
 class FloatInput(BaseInput):
     """Float input."""
 
-    type_: typing.Union[Literal["Number"]] = pydantic.Field(alias="type")
+    type_: Literal["Number"] = pydantic.Field(alias="type")
 
     integer: Optional[Literal[False]] = pydantic.Field(
         description="Specify whether the input should be an integer. "
@@ -216,7 +216,7 @@ class FloatInput(BaseInput):
 class FlagInput(BaseInput):
     """Flag input."""
 
-    type_: typing.Union[Literal["Flag"]] = pydantic.Field(alias="type")
+    type_: Literal["Flag"] = pydantic.Field(alias="type")
 
     default_value: Optional[bool] = pydantic.Field(
         alias="default-value",
@@ -470,6 +470,11 @@ class Output(pydantic.BaseModel):
         '[".nii",".nii.gz"].',
         default=None,
     )
+    path_template_fallback: Optional[str] = pydantic.Field(
+        alias="path-template-fallback",
+        description="Fall back to this value if the referenced input is optional and set to None.",
+        default=None,
+    )
 
 
 class ContainerImage(pydantic.BaseModel):
@@ -530,7 +535,7 @@ class Descriptor(SubCommand):
     tool_version: StringProperty = pydantic.Field(
         alias="tool-version", description="Tool version."
     )
-    schema_version: Literal["0.5", "styx-d1"] = pydantic.Field(alias="schema-version")
+    schema_version: Literal["0.5", "0.5+styx"] = pydantic.Field(alias="schema-version")
 
     # Optional fields
     author: Optional[StringProperty] = pydantic.Field(
