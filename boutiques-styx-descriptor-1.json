@@ -1612,29 +1612,6 @@
       "title": "CommandLineFlaggedSubCommandUnionListInput",
       "type": "object"
     },
-    "ContainerImage": {
-      "additionalProperties": false,
-      "description": "Model for container image configuration.",
-      "properties": {
-        "type": {
-          "const": "docker",
-          "title": "Type",
-          "type": "string"
-        },
-        "image": {
-          "description": "Name of an image where the tool is installed and configured. Example: bids/mriqc.",
-          "minLength": 1,
-          "title": "Image",
-          "type": "string"
-        }
-      },
-      "required": [
-        "type",
-        "image"
-      ],
-      "title": "ContainerImage",
-      "type": "object"
-    },
     "FileInput": {
       "additionalProperties": false,
       "description": "File input.",
@@ -3559,17 +3536,8 @@
       "description": "Tool description.",
       "title": "Description"
     },
-    "tool-version": {
-      "description": "Tool version.",
-      "minLength": 1,
-      "title": "Tool-Version",
-      "type": "string"
-    },
     "schema-version": {
-      "enum": [
-        "0.5",
-        "0.5+styx"
-      ],
+      "const": "0.5+styx",
       "title": "Schema-Version",
       "type": "string"
     },
@@ -3603,17 +3571,6 @@
       "description": "Tool URL.",
       "title": "Url"
     },
-    "container-image": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/ContainerImage"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
-    },
     "stdout-output": {
       "anyOf": [
         {
@@ -3642,7 +3599,6 @@
   "required": [
     "command-line",
     "name",
-    "tool-version",
     "schema-version"
   ],
   "title": "Descriptor",
