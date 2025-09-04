@@ -2562,6 +2562,19 @@
           "default": null,
           "description": "List of file extensions that will be stripped from the input values before being substituted in the path template. Example: [\".nii\",\".nii.gz\"].",
           "title": "Path-Template-Stripped-Extensions"
+        },
+        "path-template-fallback": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Fall back to this value if the referenced input is optional and set to None.",
+          "title": "Path-Template-Fallback"
         }
       },
       "required": [
@@ -3555,7 +3568,7 @@
     "schema-version": {
       "enum": [
         "0.5",
-        "styx-d1"
+        "0.5+styx"
       ],
       "title": "Schema-Version",
       "type": "string"
